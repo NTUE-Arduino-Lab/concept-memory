@@ -1,0 +1,32 @@
+//button
+@mixin primary-button($height: auto){
+    height: $height;
+    padding: 0px 16px;
+    color: $text-white;
+    background-color: $primary-default;
+    border: 2px solid $text-white;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+@mixin font($style,$size,$weight){
+    font-size: $size;
+    font-weight: $weight;
+    @if $style == normal {
+        font-family: 'Noto Sans TC', sans-serif;
+    }
+    @else{
+        font-family: 'Noto Serif TC', serif;
+    }
+    
+    @if $size == 16px {
+        letter-spacing: 1px;
+    }
+    @else{
+        letter-spacing: 2px;
+    }
+}
