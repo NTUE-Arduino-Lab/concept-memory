@@ -2,6 +2,6 @@
 </script>
 <template>
     <div>
-      海報牆
+      生成
     </div>
 </template>
