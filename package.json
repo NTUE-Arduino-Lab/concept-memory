@@ -10,12 +10,16 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@pinia/nuxt": "^0.4.11",
     "@types/node": "^18.17.3",
     "nuxt": "^3.6.5",
-    "nuxt-icon": "^0.5.0"
+    "nuxt-icon": "^0.5.0",
+    "nuxt-svgo": "^3.4.0",
+    "pinia": "^2.1.6"
   },
   "dependencies": {
     "@fortawesome/vue-fontawesome": "^3.0.3",
-    "sass": "^1.65.1"
+    "sass": "^1.65.1",
+    "simple-vue-camera": "^1.1.3"
   }
 }

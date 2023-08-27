@@ -1,11 +1,35 @@
 <script setup lang="ts">
+import { usePermissionStore } from '@/stores/permission'
+
 const isChecked = useState('isChecked', () => false)
+const inputCode = useState('inputCode', () => "")
+let warning = useState('warning', () => null)
+
+const permissionStore = usePermissionStore()
 
 const handleClickEnterBtn = () =>{
-  if(isChecked){
-    navigateTo('/generate');
+  const isEnterCode = inputCode.value == permissionStore.enterCode;
+  if(inputCode.value == ""){
+    warning.value = "請輸入活動碼"
+  }
+  else if(!isChecked.value){
+    warning.value = "請同意個人資料使用"
+  }
+  else if(!isEnterCode){
+    warning.value = "活動碼錯誤"
+  }
+  else if(isChecked.value && isEnterCode){
+    warning.value = ""
+    permissionStore.changePermission()
+    navigateTo('/generator/step/select')
   }
 }
+
+onMounted(() => {
+  warning.value = null
+  inputCode.value = ""
+  isChecked.value = false
+})
 </script>
 
 <template>
@@ -30,26 +54,17 @@ const handleClickEnterBtn = () =>{
       <Icon v-if="isChecked" name="material-symbols:fitbit-check-small" color="white" size="28" />
     </div>
     <div class="enter-container">
-      <input type="text" placeholder="輸入活動碼" />
+      <input type="text" placeholder="輸入活動碼" v-model="inputCode" />
       <button @click="handleClickEnterBtn">進入</button>
     </div>
-    <span class="notice">請同意個人資料使用 / 輸入活動碼</span>
+    <span class="warning">{{warning}}</span>
   </main>
 </template>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/variables.scss';
 
-main {
-  background-image: url('@/assets/img/bg.jpg');
-  background-repeat: repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 32px;
-  padding-bottom: 80px;
-
-  .title {
+.title {
     margin-bottom: 32px;
     width: 600px;
   }
@@ -60,7 +75,6 @@ main {
     grid-template-columns: repeat(5,max-content);
     align-items: center;
   }
-}
 
 // Checkboxes
 
@@ -187,7 +201,7 @@ button{
   }
 }
 
-.notice {
+.warning {
   margin-top: 12px;
   @include font(serif,16px,700);
   color: $text-danger;

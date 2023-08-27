@@ -42,3 +42,16 @@ a {
     font-family: 'Noto Serif TC', serif;
     font-weight: 900;
 }
+
+main {
+    position: relative;
+    background-image: url('@/assets/img/bg.jpg');
+    background-repeat: repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 32px;
+    padding-bottom: 80px;
+    padding-left: 60px;
+    padding-right: 60px;
+}

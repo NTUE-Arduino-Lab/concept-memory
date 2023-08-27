@@ -1,5 +1,5 @@
 //button
-@mixin primary-button($height: auto){
+@mixin primary-button($height: auto) {
     height: $height;
     padding: 0px 16px;
     color: $text-white;
@@ -13,20 +13,83 @@
     cursor: pointer;
 }
 
-@mixin font($style,$size,$weight){
+@mixin font($style, $size, $weight) {
     font-size: $size;
     font-weight: $weight;
-    @if $style == normal {
+
+    @if $style ==normal {
         font-family: 'Noto Sans TC', sans-serif;
     }
-    @else{
+
+    @else {
         font-family: 'Noto Serif TC', serif;
     }
-    
-    @if $size == 16px {
+
+    @if $size ==16px {
         letter-spacing: 1px;
     }
-    @else{
+
+    @else {
         letter-spacing: 2px;
     }
 }
+
+%title-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+
+    & span {
+        position: relative;
+        @include font(serif, 32px, 700);
+        color: $primary-default;
+        width: 50px;
+        height: 50px;
+        margin: 0px 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    & span:not(:first-child)::before {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border: 2px solid $primary-default;
+        border-radius: 50%;
+        margin-top: 3px;
+    }
+
+    & span:first-child {
+        color: white;
+        @include font(serif, 40px, 700);
+        margin-right: 15px;
+        z-index: 0;
+        box-sizing: border-box;
+        padding-bottom: 10px;
+
+        &::before {
+            content: "";
+            width: 66px;
+            height: 66px;
+            position: absolute;
+            background-image: url("@/assets/img/title-bg.png");
+            background-size: contain;
+            z-index: -1;
+            margin-top: 2px;
+        }
+    }
+}
+
+%guide {
+    @include font(normal, 18px, 700);
+    color: $text-gray-dark;
+    margin-bottom: 16px;
+}
+
+%btn-back {
+    background-color: white;
+    color: $text-gray-dark;
+    margin-right: 36px;
+  }
