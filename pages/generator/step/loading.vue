@@ -18,7 +18,7 @@ const handleClickBackBtn = () => {
       </span>
       <span>...</span>
     </div>
-    <img class="loading" src="/_nuxt/assets/img/loading.gif" />
+    <img class="loading" src="@/assets/img/loading.gif" />
     <button class="btn-back" @click="handleClickBackBtn">取消</button>
   </main>
 </template>

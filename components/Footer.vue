@@ -14,7 +14,7 @@
             <li><img src="@/assets/img/NTUE.png" /></li>
         </ul>
         <a to="https://www.facebook.com/TaiwanCulturalMemoryBank" target="_blank">
-            <img src="/_nuxt/assets/img/btn-fb.svg">
+            <img src="@/assets/img/btn-fb.svg">
         </a>
         <span>國家文化記憶庫版權所有 2023 © All rights reserve<br>本計畫為國家文化記憶庫示範性案例</span>
     </div>
