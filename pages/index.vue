@@ -7,18 +7,18 @@ let warning = useState('warning', () => null)
 
 const permissionStore = usePermissionStore()
 
-const handleClickEnterBtn = () =>{
+const handleClickEnterBtn = () => {
   const isEnterCode = inputCode.value == permissionStore.enterCode;
-  if(inputCode.value == ""){
+  if (inputCode.value == "") {
     warning.value = "請輸入活動碼"
   }
-  else if(!isChecked.value){
+  else if (!isChecked.value) {
     warning.value = "請同意個人資料使用"
   }
-  else if(!isEnterCode){
+  else if (!isEnterCode) {
     warning.value = "活動碼錯誤"
   }
-  else if(isChecked.value && isEnterCode){
+  else if (isChecked.value && isEnterCode) {
     warning.value = ""
     permissionStore.changePermission()
     navigateTo('/generator/step/select')
@@ -34,16 +34,14 @@ onMounted(() => {
 
 <template>
   <main>
-    <img src="@/assets/img/home/home-title.png" alt="" class="title">
     <div class="example-container">
-      <img src="@/assets/img/home/example-img-1.png" alt="" class="example">
+      <img src="@/assets/img/home/example-img-1.png" alt="" class="example" srcset="@/assets/img/home/example-img-1.png 1x, @/assets/img/home/example-img-1@2x.png 2x">
       <img src="@/assets/img/home/plus.png" alt="" class="example">
-      <img src="@/assets/img/home/example-img-2.png" alt="" class="example">
+      <img src="@/assets/img/home/example-img-2.png" alt="" class="example" srcset="@/assets/img/home/example-img-2.png 1x, @/assets/img/home/example-img-2@2x.png 2x">
       <img src="@/assets/img/home/equal.png" alt="" class="example">
-      <img src="@/assets/img/home/example-img-3.png" alt="" class="example">
+      <img src="@/assets/img/home/example-img-3.png" alt="" class="example" srcset="@/assets/img/home/example-img-3.png 1x, @/assets/img/home/example-img-3@2x.png 2x">
     </div>
     <div class="info-container">
-      <img src="@/assets/img/home/home-card-bg.png" class="info-bg">
       <p>選出你最愛的<br>臺灣近代熱門電影</p>
       <img src="@/assets/img/home/home-card-decoration.png">
       <p>以懷舊手繪風<br>打造你專屬的電影海報</p>
@@ -57,24 +55,19 @@ onMounted(() => {
       <input type="text" placeholder="輸入活動碼" v-model="inputCode" />
       <button @click="handleClickEnterBtn">進入</button>
     </div>
-    <span class="warning">{{warning}}</span>
+    <span class="warning">{{ warning }}</span>
   </main>
 </template>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/variables.scss';
 
-.title {
-    margin-bottom: 32px;
-    width: 600px;
-  }
-
-  .example-container {
-    margin-bottom: 28px;
-    display: grid;
-    grid-template-columns: repeat(5,max-content);
-    align-items: center;
-  }
+.example-container {
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: repeat(5, max-content);
+  align-items: center;
+}
 
 // Checkboxes
 
@@ -103,7 +96,7 @@ input[type="checkbox"] {
     color: $text-black;
     letter-spacing: 1px;
     margin-left: 10px;
-    @include font(normal,16px,700);
+    @include font(normal, 16px, 700);
 
     & span {
       text-decoration: underline;
@@ -139,7 +132,7 @@ input[type="checkbox"]:checked {
 }
 
 // enter
-.enter-container{
+.enter-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -147,12 +140,12 @@ input[type="checkbox"]:checked {
   margin-top: 24px;
 }
 
-input[type="text"]{
+input[type="text"] {
   border: 2px solid $primary-default;
   border-radius: 4px;
   width: 200px;
   height: 90%;
-  @include font(serif,20px,700);
+  @include font(serif, 20px, 700);
   color: $text-gray;
   text-align: center;
   padding: 0;
@@ -161,37 +154,35 @@ input[type="text"]{
 
 
 // button
-button{
+button {
   @include primary-button(100%);
   margin-left: 4px;
 }
 
 //info
-.info-container{
+.info-container {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  height:190px;
-  margin-bottom: 24px;
+  height: 156px;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-bottom: 42px;
+  background-color: $text-white;
 
-  .info-bg{
-    position: absolute;
-    z-index: 0;
-  }
-
-  img{
+  img {
     z-index: 1;
   }
 
-  p{
+  p {
     z-index: 1;
-    @include font(serif,26px,700);
+    @include font(serif, 26px, 700);
     line-height: 40px;
     color: $primary-dark;
     margin-right: 63px;
-    
-    &:last-child{
+
+    &:last-child {
       margin-right: 0px;
       margin-left: 63px;
       color: $text-black;
@@ -203,7 +194,7 @@ button{
 
 .warning {
   margin-top: 12px;
-  @include font(serif,16px,700);
+  @include font(serif, 16px, 700);
   color: $text-danger;
 }
 </style>

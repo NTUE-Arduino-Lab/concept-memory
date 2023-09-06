@@ -5,8 +5,8 @@ const route = useRoute()
 <template>
   <nav>
     <NuxtLink to="/" class="nav-link">
-      <img src="@/assets/img/TCMB.png" alt="">
-      <h1>手繪電影海報鍊金術</h1>
+      <img src="@/assets/img/TCMB.png" alt="" srcset="@/assets/img/TCMB.png 1x, @/assets/img/TCMB@2x.png 2x">
+      <h1>AI 記憶造浪者：<br>超時空電影海報繪師</h1>
     </NuxtLink>
     <div></div>
     <NuxtLink to="/posters" class="nav-link">
@@ -33,7 +33,9 @@ nav {
 
   h1 {
     display: inline-block;
-    @include font(serif,18px,900);
+    @include font(serif,16px,900);
+    padding: 0;
+    margin: 0;
   }
 
   .nav-link {

@@ -2,16 +2,16 @@
     <div class="footer">
         <ul>
             <span>- 主辦單位 -</span>
-            <li><img src="@/assets/img/NMTH.png" /></li>
+            <li><img src="@/assets/img/NMTH.png" srcset="@/assets/img/NMTH.png 1x, @/assets/img/NMTH@2x.png 2x"/></li>
         </ul>
         <ul>
             <span>- 執行單位 -</span>
-            <li><img src="@/assets/img/TCMB.png" /></li>
-            <li><img src="@/assets/img/IFII.png" /></li>
+            <li><img src="@/assets/img/TCMB.png" srcset="@/assets/img/TCMB.png 1x, @/assets/img/TCMB@2x.png 2x"/></li>
+            <li><img src="@/assets/img/IFII.png" srcset="@/assets/img/IFII.png 1x, @/assets/img/IFII@2x.png 2x"/></li>
         </ul>
         <ul>
             <span>- 合作單位 -</span>
-            <li><img src="@/assets/img/NTUE.png" /></li>
+            <li><img src="@/assets/img/NTUE.png" srcset="@/assets/img/NTUE.png 1x, @/assets/img/NTUE@2x.png 2x"/></li>
         </ul>
         <a to="https://www.facebook.com/TaiwanCulturalMemoryBank" target="_blank">
             <img src="@/assets/img/btn-fb.svg">
