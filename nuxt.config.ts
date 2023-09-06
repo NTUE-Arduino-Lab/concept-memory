@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@pinia/nuxt',
     'nuxt-svgo',
+    '@nuxtjs/google-fonts'
   ],
   vite: {
     css: {
@@ -12,6 +13,12 @@ export default defineNuxtConfig({
           additionalData: '@use "@/assets/scss/color.scss" as *;'
         }
       }
+    }
+  },
+  googleFonts: {
+    families: {
+      'Noto+Sans+TC': [700, 900],
+      'Noto+Serif+TC': [700, 900],
     }
   },
   css: [
