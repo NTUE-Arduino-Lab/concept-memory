@@ -27,7 +27,7 @@ const handleClickDownloadBtn = () => {
         </div>
       </div>
       <div class="info-container">
-        <img src="@/assets/img/info-bg.png">
+        <img src="@/assets/img/info-bg.png" alt="" srcset="@/assets/img/info-bg.png 1x, @/assets/img/info-bg@2x.png 2x">
         <span class="text-title">贈禮小活動</span>
         <span>將你的專屬手繪風格海報上傳<span class="text-underline">Facebook 公開</span>、<span class="text-underline">Tag
             國家文化記憶庫</span>即有機會獲得<span class="text-warning">小禮物</span>唷！</span>

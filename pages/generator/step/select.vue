@@ -39,7 +39,7 @@ const handleClickNextBtn = () =>{
           :value="idx">
         <label :for="item.name" name="selector">
           <div v-if="idx === selectedMovie" class="selected-bg"></div>
-          <img :src="`/_nuxt/assets/img/movies/movie${idx}.jpg`" alt="">
+          <img :src="`/_nuxt/assets/img/movies/movie${idx}.jpg`" alt="" :srcset="`/_nuxt/assets/img/movies/movie${idx}.jpg 1x, /_nuxt/assets/img/movies/movie${idx}@2x.jpg 2x`">
           <span>{{ item.name }}</span>
           <span>{{ item.year }}</span>
         </label>

@@ -5,7 +5,7 @@ const route = useRoute()
 <template>
   <nav>
     <NuxtLink to="/" class="nav-link">
-      <img src="@/assets/img/TCMB.png" alt="">
+      <img src="@/assets/img/TCMB.png" alt="" srcset="@/assets/img/TCMB.png 1x, @/assets/img/TCMB@2x.png 2x">
       <h1>AI 記憶造浪者：<br>超時空電影海報繪師</h1>
     </NuxtLink>
     <div></div>

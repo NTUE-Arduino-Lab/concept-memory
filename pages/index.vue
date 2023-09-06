@@ -35,11 +35,11 @@ onMounted(() => {
 <template>
   <main>
     <div class="example-container">
-      <img src="@/assets/img/home/example-img-1.png" alt="" class="example">
+      <img src="@/assets/img/home/example-img-1.png" alt="" class="example" srcset="@/assets/img/home/example-img-1.png 1x, @/assets/img/home/example-img-1@2x.png 2x">
       <img src="@/assets/img/home/plus.png" alt="" class="example">
-      <img src="@/assets/img/home/example-img-2.png" alt="" class="example">
+      <img src="@/assets/img/home/example-img-2.png" alt="" class="example" srcset="@/assets/img/home/example-img-2.png 1x, @/assets/img/home/example-img-2@2x.png 2x">
       <img src="@/assets/img/home/equal.png" alt="" class="example">
-      <img src="@/assets/img/home/example-img-3.png" alt="" class="example">
+      <img src="@/assets/img/home/example-img-3.png" alt="" class="example" srcset="@/assets/img/home/example-img-3.png 1x, @/assets/img/home/example-img-3@2x.png 2x">
     </div>
     <div class="info-container">
       <p>選出你最愛的<br>臺灣近代熱門電影</p>
