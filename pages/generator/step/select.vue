@@ -97,8 +97,8 @@ li {
     }
 
     .selected-bg {
-      width: 100%;
-      height: 100%;
+      width: 170px;
+      height: 300px;
       padding: 10px;
       top: -10px;
       left: -10px;

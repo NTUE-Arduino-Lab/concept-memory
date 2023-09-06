@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import Camera from "simple-vue-camera";
 // // check permission
 // definePageMeta({
 //   middleware: 'permission'
 // })
 
 const isPhotoTaken = useState('isPhotoTaken', () => false)
-const photo = useState('photo', () => "")
-const camera = ref()
+
+const video = ref<HTMLVideoElement | null>(null)
+const canvas = ref<HTMLCanvasElement | null>(null)
+let mediaStream: MediaStream | null = null
 
 const handleClickBackBtn = () => {
-  if(!isPhotoTaken.value)
+  if (!isPhotoTaken.value)
     navigateTo('/generator/step/select')
-  else
-    isPhotoTaken.value = false
+  else{
+    startCamera()
+  }
 }
 
 const handleClickCaptureBtn = async () => {
-  const blob = await camera.value?.snapshot({ width: 600, height: 450 })
-  photo.value = URL.createObjectURL(blob);
-  isPhotoTaken.value = true
+  await takeSnapshot()
 }
 
 const handleClickNextBtn = () => {
@@ -27,9 +27,52 @@ const handleClickNextBtn = () => {
 }
 
 onMounted(() => {
-  isPhotoTaken.value = false
-  photo.value = ""
+  startCamera()
 })
+
+const startCamera = async () => {
+  try {
+    isPhotoTaken.value = false
+
+    clearCanvas()
+
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true })
+
+    if (video.value) {
+      video.value.srcObject = stream
+    }
+
+    mediaStream = stream
+
+  } catch (error) {
+    console.error('Error accessing camera:', error)
+  }
+}
+
+const takeSnapshot = async () => {
+  try {
+    if (video.value && canvas.value) {
+      const context = canvas.value.getContext('2d');
+      if (context) {
+        canvas.value.width = video.value.videoWidth;
+        canvas.value.height = video.value.videoHeight;
+        context.drawImage(video.value, 0, 0, canvas.value.width, canvas.value.height);
+      }
+      isPhotoTaken.value = true
+    }
+  } catch (error) {
+    console.error('Error accessing camera:', error);
+  }
+}
+
+const clearCanvas = () => {
+  if (canvas.value) {
+    const context = canvas.value.getContext('2d');
+    if (context) {
+      context.clearRect(0, 0, canvas.value.width, canvas.value.height);
+    }
+  }
+}
 </script>
 
 <template>
@@ -42,8 +85,8 @@ onMounted(() => {
     </div>
     <div class="guide">建議以正面進行拍攝，可以讓生成的效果更好喔！</div>
     <div class="camera-container">
-      <Camera ref="camera" v-if="!isPhotoTaken" :resolution="{ width: '100%', height: '100%' }" autoplay></Camera>
-      <img :src="photo" v-if="isPhotoTaken" class="photo">
+      <video v-if="!isPhotoTaken" ref="video" autoplay></video>
+      <canvas ref="canvas" ></canvas>
     </div>
     <div v-if="!isPhotoTaken">
       <button class="btn-back" @click="handleClickBackBtn">返回</button>
@@ -62,6 +105,7 @@ onMounted(() => {
 .title-container {
   @extend %title-container
 }
+
 .guide {
   @extend %guide
 }
@@ -70,10 +114,15 @@ onMounted(() => {
   width: 600px;
   height: 450px;
   margin-bottom: 36px;
+  z-index: 0;
 
-  .photo {
+  video, canvas {
     width: 100%;
     height: 100%;
+  }
+
+  & ~ div{
+    z-index: 1;
   }
 }
 

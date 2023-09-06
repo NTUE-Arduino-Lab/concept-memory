@@ -35,11 +35,14 @@ onMounted(() => {
 <template>
   <main>
     <div class="example-container">
-      <img src="@/assets/img/home/example-img-1.png" alt="" class="example" srcset="@/assets/img/home/example-img-1.png 1x, @/assets/img/home/example-img-1@2x.png 2x">
+      <img src="@/assets/img/home/example-img-1.png" alt="" class="example"
+        srcset="@/assets/img/home/example-img-1.png 1x, @/assets/img/home/example-img-1@2x.png 2x">
       <img src="@/assets/img/home/plus.png" alt="" class="example">
-      <img src="@/assets/img/home/example-img-2.png" alt="" class="example" srcset="@/assets/img/home/example-img-2.png 1x, @/assets/img/home/example-img-2@2x.png 2x">
+      <img src="@/assets/img/home/example-img-2.png" alt="" class="example"
+        srcset="@/assets/img/home/example-img-2.png 1x, @/assets/img/home/example-img-2@2x.png 2x">
       <img src="@/assets/img/home/equal.png" alt="" class="example">
-      <img src="@/assets/img/home/example-img-3.png" alt="" class="example" srcset="@/assets/img/home/example-img-3.png 1x, @/assets/img/home/example-img-3@2x.png 2x">
+      <img src="@/assets/img/home/example-img-3.png" alt="" class="example"
+        srcset="@/assets/img/home/example-img-3.png 1x, @/assets/img/home/example-img-3@2x.png 2x">
     </div>
     <div class="info-container">
       <p>選出你最愛的<br>臺灣近代熱門電影</p>
@@ -47,9 +50,12 @@ onMounted(() => {
       <p>以懷舊手繪風<br>打造你專屬的電影海報</p>
     </div>
     <div class="checkbox-container">
-      <input type="checkbox" id="checkbox" v-model="isChecked">
+      <div class="custom-checkbox-container">
+        <input type="checkbox" id="checkbox" v-model="isChecked">
+        <div class="custom-checkbox"></div>
+        <Icon v-if="isChecked" name="material-symbols:fitbit-check-small" color="white" size="28" />
+      </div>
       <label for="checkbox">我同意我的<span>個人資料</span>及<span>肖像權</span>使用於國家文化記憶庫AI生成、海報牆及成果展</label>
-      <Icon v-if="isChecked" name="material-symbols:fitbit-check-small" color="white" size="28" />
     </div>
     <div class="enter-container">
       <input type="text" placeholder="輸入活動碼" v-model="inputCode" />
@@ -82,52 +88,53 @@ $checkbox-width: 18px;
   width: 340px;
 }
 
-input[type="checkbox"] {
+.custom-checkbox-container {
   position: relative;
-  width: $checkbox-width + 20px;
-  height: $checkbox-width + 20px;
-  z-index: 1;
-  opacity: 0;
 
-  &+label {
-    display: inline-block;
-    position: relative;
+  input[type="checkbox"] {
+    position: absolute;
+    width: $checkbox-width + 10px;
+    height: $checkbox-width + 10px;
+    z-index: 1;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
     cursor: pointer;
-    color: $text-black;
-    letter-spacing: 1px;
-    margin-left: 10px;
-    @include font(normal, 16px, 700);
+  }
 
-    & span {
-      text-decoration: underline;
-    }
+  .icon {
+    cursor: pointer;
+    position: absolute;
+    top: -2px;
+    left: -3px;
+  }
 
-    &:before {
-      display: block;
-      position: absolute;
-      content: "";
-      top: 11px;
-      left: -17px - $checkbox-width;
-      width: $checkbox-width;
-      height: $checkbox-width;
-      border: 2px solid $primary-default;
-      border-radius: 4px;
-    }
-
-    &+.icon {
-      cursor: pointer;
-      position: absolute;
-      top: 8px;
-      left: -1px;
-    }
+  .custom-checkbox {
+    display: block;
+    width: $checkbox-width;
+    height: $checkbox-width;
+    border: 2px solid $primary-default;
+    border-radius: 4px;
   }
 }
 
-input[type="checkbox"]:checked {
-  &+label {
-    &:before {
-      background-color: $primary-default;
-    }
+input[type="checkbox"]:checked{
+  &+.custom-checkbox {
+    background-color: $primary-default;
+  }
+}
+
+.checkbox-container>label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  color: $text-black;
+  letter-spacing: 1px;
+  margin-left: 10px;
+  @include font(normal, 16px, 700);
+
+  & span {
+    text-decoration: underline;
   }
 }
 
@@ -196,5 +203,4 @@ button {
   margin-top: 12px;
   @include font(serif, 16px, 700);
   color: $text-danger;
-}
-</style>
+}</style>
