@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useMoviesStore } from '@/stores/movies'
+import { usePostersStore } from '@/stores/posters'
 
-const moviesStore = useMoviesStore()
+const postersStore = usePostersStore()
 const selectedMovie = useState('selectedMovie', () => 0)
 const movies = useState('movies', () => null)
 
@@ -11,12 +11,13 @@ const movies = useState('movies', () => null)
 // })
 
 onMounted(() => {
-  movies.value = moviesStore.movies
+  movies.value = postersStore.movies
   selectedMovie.value = 0
 })
 
-const handleClickNextBtn = () =>{
-    navigateTo('/generator/step/camera')
+const handleClickNextBtn = () => {
+  postersStore.setSelectedMovie(selectedMovie.value)
+  navigateTo('/generator/step/camera')
 }
 </script>
 
@@ -30,17 +31,13 @@ const handleClickNextBtn = () =>{
     </div>
     <div class="guide">提供 20 張臺灣近代電影海報，選擇你喜歡的電影元素</div>
     <ul>
-      <li v-for="item,idx in movies" :key="item.name">
-        <input
-          type="radio"
-          :id="item.name"
-          name="selector"
-          v-model="selectedMovie"
-          :value="idx">
+      <li v-for="item, idx in movies" :key="item.name">
+        <input type="radio" :id="item.name" name="selector" v-model="selectedMovie" :value="idx">
         <label :for="item.name" name="selector">
           <div v-if="idx === selectedMovie" class="selected-bg"></div>
           <!-- <img :src="`/assets/img/movies/movie${idx}.jpg`" alt="" :srcset="`/assets/img/movies/movie${idx}.jpg 1x, /assets/img/movies/movie${idx}@2x.jpg 2x`"> -->
-          <img :src="`/img/movies/movie${idx}.jpg`" alt="" :srcset="`/img/movies/movie${idx}.jpg 1x, /img/movies/movie${idx}@2x.jpg 2x`">
+          <img :src="`/img/movies/movie${idx}.jpg`" alt=""
+            :srcset="`/img/movies/movie${idx}.jpg 1x, /img/movies/movie${idx}@2x.jpg 2x`">
           <span>{{ item.name }}</span>
           <span>{{ item.year }}</span>
         </label>
@@ -54,11 +51,11 @@ const handleClickNextBtn = () =>{
 <style lang="scss" scoped>
 @import '@/assets/scss/variables.scss';
 
-.title-container{
+.title-container {
   @extend %title-container
 }
 
-.guide{
+.guide {
   @extend %guide
 }
 
@@ -77,16 +74,16 @@ li {
   list-style-type: none;
   width: 170px;
 
-  label{
+  label {
     width: 100%;
     cursor: pointer;
     position: relative;
 
     img {
-       position: relative;
-       width: 100%;
-       display: block;
-       margin-bottom: 10px;
+      position: relative;
+      width: 100%;
+      display: block;
+      margin-bottom: 10px;
     }
 
     span {
@@ -94,7 +91,7 @@ li {
       display: block;
       text-align: center;
       color: $primary-default;
-      @include font(serif,18px,700);
+      @include font(serif, 18px, 700);
     }
 
     .selected-bg {
@@ -118,11 +115,11 @@ li {
 
 .selected {
   color: $text-black;
-  @include font(normal,18px,700);
+  @include font(normal, 18px, 700);
   margin-bottom: 16px;
 }
 
-button{
+button {
   @include primary-button(50px);
 }
 </style>

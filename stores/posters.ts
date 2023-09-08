@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const data : Array<MovieState> = [
+const data: Array<MovieState> = [
     {
         name: "海角七號",
         year: 2008,
@@ -46,14 +46,24 @@ interface MovieState {
 
 interface State {
     movies: Array<MovieState>
+    selfieBase64: string | null
+    selectedMovie: number
 }
 
-export const useMoviesStore = defineStore('movies', {
-  state: () : State => ({
-    movies: data
-  }),
-  actions: {
-  },
-  getters: {
-  }
+export const usePostersStore = defineStore('posters', {
+    state: (): State => ({
+        movies: data,
+        selfieBase64: null,
+        selectedMovie: 0
+    }),
+    actions: {
+        setSelectedMovie(selectedMovie: number): void {
+            this.selectedMovie = selectedMovie
+        },
+        setSelfieBase64(imgBase64: string): void {
+            this.selfieBase64 = imgBase64
+        }
+    },
+    getters: {
+    }
 })

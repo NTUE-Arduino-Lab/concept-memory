@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { usePostersStore } from '@/stores/posters'
+
 // // check permission
 // definePageMeta({
 //   middleware: 'permission'
 // })
 
 const isPhotoTaken = useState('isPhotoTaken', () => false)
+const postersStore = usePostersStore()
 
 const video = ref<HTMLVideoElement | null>(null)
 const canvas = ref<HTMLCanvasElement | null>(null)
@@ -23,7 +26,7 @@ const handleClickCaptureBtn = async () => {
 }
 
 const handleClickNextBtn = () => {
-  navigateTo('/generator/step/loading')
+  navigateTo('/generator/step/generate')
 }
 
 onMounted(() => {
@@ -52,24 +55,26 @@ const startCamera = async () => {
 const takeSnapshot = async () => {
   try {
     if (video.value && canvas.value) {
-      const context = canvas.value.getContext('2d');
+      const context = canvas.value.getContext('2d')
       if (context) {
-        canvas.value.width = video.value.videoWidth;
-        canvas.value.height = video.value.videoHeight;
-        context.drawImage(video.value, 0, 0, canvas.value.width, canvas.value.height);
+        canvas.value.width = video.value.videoWidth
+        canvas.value.height = video.value.videoHeight
+        context.drawImage(video.value, 0, 0, canvas.value.width, canvas.value.height)
+        const imgBase64 = canvas.value.toDataURL()
+        postersStore.setSelfieBase64(imgBase64.replace('data:image/png;base64,',''))
       }
       isPhotoTaken.value = true
     }
   } catch (error) {
-    console.error('Error accessing camera:', error);
+    console.error('Error accessing camera:', error)
   }
 }
 
 const clearCanvas = () => {
   if (canvas.value) {
-    const context = canvas.value.getContext('2d');
+    const context = canvas.value.getContext('2d')
     if (context) {
-      context.clearRect(0, 0, canvas.value.width, canvas.value.height);
+      context.clearRect(0, 0, canvas.value.width, canvas.value.height)
     }
   }
 }

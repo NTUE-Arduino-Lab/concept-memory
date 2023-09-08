@@ -5,7 +5,7 @@
 // })
 
 const handleClickBackBtn = () => {
-  navigateTo('/generator/step/select')
+  navigateTo('/generator/step/camera')
 }
 const handleClickNextBtn = () => {
   navigateTo('/generator/step/download')

@@ -11,7 +11,7 @@ export const usePermissionStore = defineStore('permission', {
     isEnter: false,
   }),
   actions: {
-    changePermission() : void {
+    setPermission() : void {
       this.isEnter = true
     }
   },

@@ -20,7 +20,7 @@ const handleClickEnterBtn = () => {
   }
   else if (isChecked.value && isEnterCode) {
     warning.value = ""
-    permissionStore.changePermission()
+    permissionStore.setPermission()
     navigateTo('/generator/step/select')
   }
 }
