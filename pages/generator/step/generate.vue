@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usePostersStore } from '@/stores/posters'
+import imgBase64 from '@/assets/testImgBase64'
 
 // // check permission
 // definePageMeta({
@@ -8,7 +9,7 @@ import { usePostersStore } from '@/stores/posters'
 
 //ReActor arguments
 let args = [
-    //img_base64,
+    imgBase64,
     true,
     '0',
     '0',
@@ -82,10 +83,18 @@ let data = {
 const requestData = useState('requestData', () => data)
 const postersStore = usePostersStore()
 
-const { pending: pending, data: poster, error: error } = useFetch('https://cors-anywhere.herokuapp.com/http://44.218.216.41:7860/sdapi/v1/txt2img', {
+// https://cors-anywhere.herokuapp.com/
+const { pending: pending, data: poster, error: error } = useFetch('http://44.218.216.41:7860/sdapi/v1/txt2img', {
     method: 'post',
     lazy: true,
     body: data,
+    onRequest({ request, response, options }){
+        const newData = data
+        // newData.alwayson_scripts = { "reactor": { "args": [ postersStore.selfieBase64,...args] } }
+        newData.alwayson_scripts = { "reactor": { "args": [ ...args] } }
+        requestData.value = newData
+        console.log(newData)
+    },
     onResponse({ request, response, options }) {
         console.log("finish")
         console.log(response._data)
@@ -97,12 +106,14 @@ const { pending: pending, data: poster, error: error } = useFetch('https://cors-
 })
 
 onMounted(() => {
-    if(postersStore.selfieBase64){
-        const newData = data
-        newData.alwayson_scripts = { "reactor": { "args": [ postersStore.selfieBase64,...args] } }
-        requestData.value = newData
-        console.log(newData)
-    }
+    // if(postersStore.selfieBase64){
+    //     const newData = data
+    //     // newData.alwayson_scripts = { "reactor": { "args": [ postersStore.selfieBase64,...args] } }
+    //     newData.alwayson_scripts = { "reactor": { "args": [ postersStore.selfieBase64,...args] } }
+    //     requestData.value = newData
+    //     console.log(newData)
+    //     console.log("onmouted")
+    // }
 })
 </script>
 
