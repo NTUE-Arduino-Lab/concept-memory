@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import { usePostersStore } from '@/stores/posters'
+
 // // check permission
 // definePageMeta({
 //   middleware: 'permission'
 // })
+
+const postersStore = usePostersStore()
 
 const handleClickDownloadBtn = () => {
 }
@@ -17,7 +21,7 @@ const handleClickDownloadBtn = () => {
       </span>
     </div>
     <div class="content-container">
-      <img class="result-img" src="@/assets/img/test.png" />
+      <img class="result-img" :src="postersStore.resultImgBase64" alt=""/>
       <div class="download-container">
         <img src="@/assets/img/QRCode.png" />
         <div class="guide-container">
@@ -50,8 +54,9 @@ const handleClickDownloadBtn = () => {
   margin-bottom: 160px;
 
   .result-img {
+    width: 340px;
     grid-row: 1/3;
-    margin-right: 128px;
+    margin-right: 100px;
   }
 }
 
