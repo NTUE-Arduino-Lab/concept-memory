@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@fortawesome/vue-fontawesome": "^3.0.3",
+    "firebase": "^10.3.1",
     "sass": "^1.65.1"
   }
 }

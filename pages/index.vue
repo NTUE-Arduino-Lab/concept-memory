@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import { usePermissionStore } from '@/stores/permission'
+import { doc, getDoc } from 'firebase/firestore';
 
+const { $db } = useNuxtApp()
 const isChecked = useState('isChecked', () => false)
 const inputCode = useState('inputCode', () => "")
+const enterCode = useState('enterCode', () => null)
 let warning = useState('warning', () => null)
 
 const permissionStore = usePermissionStore()
 
 const handleClickEnterBtn = () => {
-  const isEnterCode = inputCode.value == permissionStore.enterCode;
+  if (!enterCode)
+    console.log("cannot get entercode")
+
+  const isEnterCode = inputCode.value == enterCode.value;
+  console.log(enterCode.value)
+
   if (inputCode.value == "") {
     warning.value = "請輸入活動碼"
   }
@@ -25,10 +33,23 @@ const handleClickEnterBtn = () => {
   }
 }
 
+const getEnterPassword = async () => {
+  try {
+    const docRef = doc($db, "password", "enter")
+    const docSnap = await getDoc(docRef)
+    const password = docSnap.data().password
+    enterCode.value = password
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 onMounted(() => {
   warning.value = null
   inputCode.value = ""
   isChecked.value = false
+
+  getEnterPassword()
 })
 </script>
 
@@ -118,7 +139,7 @@ $checkbox-width: 18px;
   }
 }
 
-input[type="checkbox"]:checked{
+input[type="checkbox"]:checked {
   &+.custom-checkbox {
     background-color: $primary-default;
   }
@@ -203,4 +224,5 @@ button {
   margin-top: 12px;
   @include font(serif, 16px, 700);
   color: $text-danger;
-}</style>
+}
+</style>
