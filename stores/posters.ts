@@ -124,6 +124,8 @@ interface State {
     selectedMovie: number
     resultImgBase64: string | null
     sdRequestData: Object
+    resultImgName: string
+    qrcodeUrl: string
 }
 
 export const usePostersStore = defineStore('posters', {
@@ -132,19 +134,27 @@ export const usePostersStore = defineStore('posters', {
         selfieBase64: null,
         selectedMovie: 0,
         resultImgBase64: null,
-        sdRequestData: sdData
+        sdRequestData: sdData,
+        resultImgName: null,
+        qrcodeUrl: null
     }),
     actions: {
         setSelectedMovie(selectedMovie: number): void {
             this.selectedMovie = selectedMovie
         },
-        setSelfieBase64(imgBase64: string): void {
+        setSelfieBase64(imgBase64: string | null): void {
             this.selfieBase64 = imgBase64
 
             this.sdRequestData.alwayson_scripts = { "reactor": { "args": [ imgBase64,...args] } }
         },
         setResultImgBase64(imgBase64: string): void {
             this.resultImgBase64 = imgBase64
+        },
+        setResultImgName(name: string): void {
+            this.resultImgName = name
+        },
+        setQrcodeUrl(url: string): void {
+            this.qrcodeUrl = url
         }
     },
     getters: {

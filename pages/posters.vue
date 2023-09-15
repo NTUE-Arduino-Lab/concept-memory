@@ -1,4 +1,36 @@
 <script setup lang="ts">
+import { ref, listAll, getDownloadURL } from "firebase/storage";
+
+const { $storage } = useNuxtApp()
+
+const posters = useState('posters', () => [])
+
+const getPosters = async () => {
+  try {
+    const listRef = ref($storage, 'images/');
+
+    listAll(listRef)
+      .then((res) => {
+        const promises = res.items.map(async (itemRef) => {
+          const url = await getDownloadURL(itemRef);
+          return { name: itemRef.name, url };
+        });
+        return Promise.all(promises);
+      })
+      .then((items) => {
+        posters.value = items
+      }).catch((e) => {
+        console.error(e);
+      })
+
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+onMounted(() => {
+  getPosters()
+})
 </script>
 
 <template>
@@ -9,30 +41,9 @@
         {{ char }}
       </span>
     </div>
-    <div class="posters-container">
+    <div v-if="posters.length > 0" class="posters-container">
       <div class="posters-list">
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
-        <img src="@/assets/img/test.png" />
+        <img v-for="item, idx in posters" :src="item.url" :key="item.name">
       </div>
     </div>
   </main>
@@ -52,7 +63,8 @@
 .posters-container {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: min-content;
+  max-height: 600px;
   padding: 24px 28px;
   margin-top: 36px;
   margin-bottom: 60px;

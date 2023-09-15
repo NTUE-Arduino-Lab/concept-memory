@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { usePostersStore } from '@/stores/posters'
-import { ref, uploadString } from "firebase/storage"
-
 
 // // check permission
 // definePageMeta({
@@ -10,31 +8,11 @@ import { ref, uploadString } from "firebase/storage"
 
 const postersStore = usePostersStore()
 
-const { $storage } = useNuxtApp()
-
 const handleClickBackBtn = () => {
   navigateTo('/generator/step/camera')
 }
 const handleClickNextBtn = () => {
-  uploadPoster()
-
   navigateTo('/generator/step/download')
-}
-
-const uploadPoster = async () => {
-  try {
-    const timestamp = new Date().getTime();
-    const randomId = Math.random().toString(36).substring(2, 8);
-    const uniqueName = `${timestamp}-${randomId}`;
-
-    const storageRef = ref($storage, `images/${uniqueName}`);
-
-    uploadString(storageRef, postersStore.resultImgBase64, 'data_url')
-      .then((snapshot: any) => {
-      });
-  } catch (e) {
-    console.error(e);
-  }
 }
 </script>
 

@@ -25,6 +25,7 @@ const { pending: pending, data: poster, error: error } = useFetch('http://44.218
 })
 
 const drawCanvas = async (imgBase64: string) => {
+    if (!canvas.value) return
     const context = canvas.value.getContext('2d')
     canvas.value.width = 768
     canvas.value.height = 1024
@@ -50,8 +51,12 @@ const drawCanvas = async (imgBase64: string) => {
     postersStore.setResultImgBase64(mergedBase64)
 }
 
+onMounted(() => {
+    loading.value = true
+})
+
 watch(pending, value => {
-    if(pending){
+    if (!pending.value) {
         drawCanvas(poster._rawValue.images[0])
         loading.value = false
     }

@@ -29,6 +29,7 @@ const handleClickCaptureBtn = async () => {
 }
 
 const handleClickNextBtn = () => {
+  isPhotoTaken.value = false
   navigateTo('/generator/step/generate')
 }
 
@@ -94,6 +95,7 @@ const stopCamera = () => {
 }
 
 onMounted(() => {
+  postersStore.setSelfieBase64(null)
   startCamera()
 })
 </script>

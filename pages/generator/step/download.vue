@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { usePostersStore } from '@/stores/posters'
+import QRcode from 'qrcode'
+import { ref, getDownloadURL, uploadString } from "firebase/storage"
 
 // // check permission
 // definePageMeta({
@@ -8,8 +10,39 @@ import { usePostersStore } from '@/stores/posters'
 
 const postersStore = usePostersStore()
 
+const { $storage } = useNuxtApp()
+
+const posterUrl = useState('posterUrl', () => [])
+const qrcodeData = useState('qrcodeData', () => [])
+
 const handleClickDownloadBtn = () => {
 }
+
+const uploadPoster = async () => {
+  try {
+    const timestamp = new Date().getTime();
+    const randomId = Math.random().toString(36).substring(2, 8);
+    const uniqueName = `${timestamp}-${randomId}`;
+
+    const storageRef = ref($storage, `images/${uniqueName}`)
+
+    const uploadTask = uploadString(storageRef, postersStore.resultImgBase64, 'data_url')
+
+    uploadTask.then((snapshot) => {
+      getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+        qrcodeData.value = await QRcode.toDataURL(downloadURL)
+      })
+    }).catch((error) => {
+      console.error(error);
+    });
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+onMounted(() => {
+  uploadPoster()
+})
 </script>
 
 <template>
@@ -21,9 +54,9 @@ const handleClickDownloadBtn = () => {
       </span>
     </div>
     <div class="content-container">
-      <img class="result-img" :src="postersStore.resultImgBase64" alt=""/>
+      <img class="result-img" :src="postersStore.resultImgBase64" alt="" />
       <div class="download-container">
-        <img src="@/assets/img/QRCode.png" />
+        <img :src="qrcodeData" class="qrcode"/>
         <div class="guide-container">
           <span>請掃描下載</span>
           <span>OR</span>
@@ -65,6 +98,10 @@ const handleClickDownloadBtn = () => {
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
+
+  .qrcode {
+    width: 200px;
+  }
 }
 
 .guide-container {
