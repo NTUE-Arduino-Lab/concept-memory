@@ -15,7 +15,6 @@ const handleClickEnterBtn = () => {
     console.log("cannot get entercode")
 
   const isEnterCode = inputCode.value == enterCode.value;
-  console.log(enterCode.value)
 
   if (inputCode.value == "") {
     warning.value = "請輸入活動碼"

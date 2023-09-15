@@ -9,8 +9,8 @@ import { usePostersStore } from '@/stores/posters'
 const isPhotoTaken = useState('isPhotoTaken', () => false)
 const postersStore = usePostersStore()
 
-const video = ref<HTMLVideoElement | null>(null)
-const canvas = ref<HTMLCanvasElement | null>(null)
+const videoRef = ref<HTMLVideoElement | null>(null)
+const canvasRef = ref<HTMLCanvasElement | null>(null)
 let mediaStream: MediaStream | null = null
 
 const handleClickBackBtn = () => {
@@ -32,16 +32,12 @@ const handleClickNextBtn = () => {
   navigateTo('/generator/step/generate')
 }
 
-onMounted(() => {
-  startCamera()
-})
-
 const startCamera = async () => {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true })
-
-    if (video.value) {
-      video.value.srcObject = stream
+    
+    if (videoRef) {
+      videoRef.value.srcObject = stream
     }
 
     mediaStream = stream
@@ -53,13 +49,13 @@ const startCamera = async () => {
 
 const takeSnapshot = async () => {
   try {
-    if (video.value && canvas.value) {
-      const context = canvas.value.getContext('2d')
+    if (videoRef.value && canvasRef.value) {
+      const context = canvasRef.value.getContext('2d')
       if (context) {
-        canvas.value.width = video.value.videoWidth
-        canvas.value.height = video.value.videoHeight
-        context.drawImage(video.value, 0, 0, canvas.value.width, canvas.value.height)
-        const imgBase64 = canvas.value.toDataURL()
+        canvasRef.value.width = videoRef.value.videoWidth
+        canvasRef.value.height = videoRef.value.videoHeight
+        context.drawImage(videoRef.value, 0, 0, canvasRef.value.width, canvasRef.value.height)
+        const imgBase64 = canvasRef.value.toDataURL()
         postersStore.setSelfieBase64(imgBase64.replace('data:image/png;base64,', ''))
       }
       isPhotoTaken.value = true
@@ -70,10 +66,10 @@ const takeSnapshot = async () => {
 }
 
 const clearCanvas = () => {
-  if (canvas.value) {
-    const context = canvas.value.getContext('2d')
+  if (canvasRef.value) {
+    const context = canvasRef.value.getContext('2d')
     if (context) {
-      context.clearRect(0, 0, canvas.value.width, canvas.value.height)
+      context.clearRect(0, 0, canvasRef.value.width, canvasRef.value.height)
     }
   }
 }
@@ -82,19 +78,24 @@ const stopCamera = () => {
   try {
     if (mediaStream) {
       mediaStream.getTracks().forEach(track => track.stop())
-      if (video.value) {
-        video.value.srcObject = null
+
+      if (videoRef.value) {
+        videoRef.value.srcObject = null
       }
       mediaStream = null;
 
-      isPhotoTaken.value = false
-
       clearCanvas()
+
+      isPhotoTaken.value = false
     }
   } catch (error) {
     console.error('Error stopping camera:', error);
   }
-};
+}
+
+onMounted(() => {
+  startCamera()
+})
 </script>
 
 <template>
@@ -107,8 +108,8 @@ const stopCamera = () => {
     </div>
     <div class="guide">建議以正面進行拍攝，可以讓生成的效果更好喔！</div>
     <div class="camera-container">
-      <video v-if="!isPhotoTaken" ref="video" autoplay></video>
-      <canvas ref="canvas"></canvas>
+      <video v-if="!isPhotoTaken" ref="videoRef" autoplay></video>
+      <canvas ref="canvasRef"></canvas>
     </div>
     <div v-if="!isPhotoTaken">
       <button class="btn-back" @click="handleClickBackBtn">返回</button>

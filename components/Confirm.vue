@@ -1,54 +1,40 @@
 <script setup lang="ts">
 import { usePostersStore } from '@/stores/posters'
-import imgFrameBase64 from '@/assets/imgFrameBase64'
+import { ref, uploadString } from "firebase/storage"
+
+
 // // check permission
 // definePageMeta({
 //   middleware: 'permission'
 // })
 
 const postersStore = usePostersStore()
-const canvas = ref<HTMLCanvasElement | null>(null)
-const imgtest = useState('imgtest', () => '')
+
+const { $storage } = useNuxtApp()
 
 const handleClickBackBtn = () => {
   navigateTo('/generator/step/camera')
 }
 const handleClickNextBtn = () => {
+  uploadPoster()
+
   navigateTo('/generator/step/download')
 }
 
-onMounted(async () => {
-  if (postersStore) {
-    await drawCanvas()
-    const mergedBase64 = canvas.value.toDataURL()
-    postersStore.setResultImgBase64(mergedBase64)
+const uploadPoster = async () => {
+  try {
+    const timestamp = new Date().getTime();
+    const randomId = Math.random().toString(36).substring(2, 8);
+    const uniqueName = `${timestamp}-${randomId}`;
+
+    const storageRef = ref($storage, `images/${uniqueName}`);
+
+    uploadString(storageRef, postersStore.resultImgBase64, 'data_url')
+      .then((snapshot: any) => {
+      });
+  } catch (e) {
+    console.error(e);
   }
-})
-
-const drawCanvas = async () => {
-  const context = canvas.value.getContext('2d')
-  canvas.value.width = 768;
-  canvas.value.height = 1024;
-
-  const img = new Image();
-  img.src = `data:image/jpeg;base64, ${postersStore.resultImgBase64}`
-
-  const img2 = new Image();
-  img2.src = `data:image/jpeg;base64, ${imgFrameBase64}`
-  await Promise.all([
-    new Promise((resolve) => {
-      img.onload = () => {
-        context.drawImage(img, 0, 0, 768, 1024)
-        resolve();
-      }
-    }),
-    new Promise((resolve) => {
-      img2.onload = () => {
-        context.drawImage(img2, 0, 0, 768, 1024)
-        resolve();
-      }
-    })
-  ]);
 }
 </script>
 
@@ -61,7 +47,7 @@ const drawCanvas = async () => {
       </span>
     </div>
     <div class="result-container">
-      <canvas ref="canvas" class="poster"></canvas>
+      <img :src="postersStore.resultImgBase64" alt="" class="poster">
     </div>
     <div>
       <button class="btn-back" @click="handleClickBackBtn">重新拍攝</button>
