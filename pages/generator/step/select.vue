@@ -5,10 +5,10 @@ const postersStore = usePostersStore()
 const selectedMovie = useState('selectedMovie', () => 0)
 const movies = useState('movies', () => null)
 
-// // check permission
-// definePageMeta({
-//   middleware: 'permission'
-// })
+// check permission
+definePageMeta({
+  middleware: 'permission'
+})
 
 onMounted(() => {
   movies.value = postersStore.movies
@@ -34,7 +34,7 @@ const handleClickNextBtn = () => {
       <li v-for="item, idx in movies" :key="item.name">
         <input type="radio" :id="item.name" name="selector" v-model="selectedMovie" :value="idx">
         <label :for="item.name" name="selector">
-          <div v-if="idx === selectedMovie" class="selected-bg"></div>
+          <div v-if="idx === selectedMovie || selectedMovie === -1" class="selected-bg"></div>
           <!-- <img :src="`/assets/img/movies/movie${idx}.jpg`" alt="" :srcset="`/assets/img/movies/movie${idx}.jpg 1x, /assets/img/movies/movie${idx}@2x.jpg 2x`"> -->
           <img :src="`/img/movies/movie${idx}.jpg`" alt=""
             :srcset="`/img/movies/movie${idx}.jpg 1x, /img/movies/movie${idx}@2x.jpg 2x`">

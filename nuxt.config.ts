@@ -3,9 +3,13 @@ export default defineNuxtConfig({
   modules: [
     'nuxt-icon',
     '@pinia/nuxt',
+    "@pinia-plugin-persistedstate/nuxt",
     'nuxt-svgo',
     '@nuxtjs/google-fonts'
   ],
+  piniaPersistedstate: {
+    storage: 'localStorage',
+  },
   vite: {
     css: {
       preprocessorOptions: {

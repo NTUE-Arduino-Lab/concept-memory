@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { usePostersStore } from '@/stores/posters'
 
-// // check permission
-// definePageMeta({
-//   middleware: 'permission'
-// })
-
 const postersStore = usePostersStore()
 
 const handleClickBackBtn = () => {

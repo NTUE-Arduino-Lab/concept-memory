@@ -2,10 +2,10 @@
 import { usePostersStore } from '@/stores/posters'
 import imgFrameBase64 from '@/assets/imgFrameBase64'
 
-// // check permission
-// definePageMeta({
-//   middleware: 'permission'
-// })
+// check permission
+definePageMeta({
+    middleware: 'permission'
+})
 
 const postersStore = usePostersStore()
 const requestData = useState('requestData', () => postersStore.sdRequestData)
@@ -52,6 +52,9 @@ const drawCanvas = async (imgBase64: string) => {
 }
 
 onMounted(() => {
+    if (postersStore.selectedMovie === null)
+        navigateTo('/generator/step/select')
+
     loading.value = true
 })
 

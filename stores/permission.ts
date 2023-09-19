@@ -1,16 +1,19 @@
 import { defineStore } from 'pinia'
 
 interface State {
-  isEnter: boolean;
+  isEnter: boolean
 }
 
 export const usePermissionStore = defineStore('permission', {
   state: () : State => ({
-    isEnter: false,
+    isEnter: false
   }),
   actions: {
-    setPermission() : void {
-      this.isEnter = true
+    setPermission(value: boolean) : void {
+      this.isEnter = value
     }
+  },
+  persist: {
+    storage: persistedState.localStorage,
   }
 })

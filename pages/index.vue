@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { usePermissionStore } from '@/stores/permission'
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore'
 
 const { $db } = useNuxtApp()
 const isChecked = useState('isChecked', () => false)
@@ -23,11 +23,12 @@ const handleClickEnterBtn = () => {
     warning.value = "請同意個人資料使用"
   }
   else if (!isEnterCode) {
+    permissionStore.setPermission(false)
     warning.value = "活動碼錯誤"
   }
   else if (isChecked.value && isEnterCode) {
     warning.value = ""
-    permissionStore.setPermission()
+    permissionStore.setPermission(true)
     navigateTo('/generator/step/select')
   }
 }

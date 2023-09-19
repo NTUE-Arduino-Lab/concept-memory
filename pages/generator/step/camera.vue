@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { usePostersStore } from '@/stores/posters'
 
-// // check permission
-// definePageMeta({
-//   middleware: 'permission'
-// })
+// check permission
+definePageMeta({
+  middleware: 'permission'
+})
 
 const isPhotoTaken = useState('isPhotoTaken', () => false)
 const postersStore = usePostersStore()
@@ -29,7 +29,6 @@ const handleClickCaptureBtn = async () => {
 }
 
 const handleClickNextBtn = () => {
-  isPhotoTaken.value = false
   navigateTo('/generator/step/generate')
 }
 
@@ -37,7 +36,7 @@ const startCamera = async () => {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true })
     
-    if (videoRef) {
+    if (videoRef.value && stream) {
       videoRef.value.srcObject = stream
     }
 
@@ -95,6 +94,10 @@ const stopCamera = () => {
 }
 
 onMounted(() => {
+  if(postersStore.selectedMovie === null)
+    navigateTo('/generator/step/select')
+  
+  isPhotoTaken.value = false
   postersStore.setSelfieBase64(null)
   startCamera()
 })

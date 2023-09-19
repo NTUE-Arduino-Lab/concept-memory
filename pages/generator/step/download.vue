@@ -2,11 +2,12 @@
 import { usePostersStore } from '@/stores/posters'
 import QRcode from 'qrcode'
 import { ref, getDownloadURL, uploadString } from "firebase/storage"
+import { saveAs } from 'file-saver'
 
-// // check permission
-// definePageMeta({
-//   middleware: 'permission'
-// })
+// check permission
+definePageMeta({
+  middleware: 'permission'
+})
 
 const postersStore = usePostersStore()
 
@@ -16,6 +17,7 @@ const posterUrl = useState('posterUrl', () => [])
 const qrcodeData = useState('qrcodeData', () => [])
 
 const handleClickDownloadBtn = () => {
+  saveAs(postersStore.resultImgBase64, "poster");
 }
 
 const uploadPoster = async () => {
@@ -31,16 +33,20 @@ const uploadPoster = async () => {
     uploadTask.then((snapshot) => {
       getDownloadURL(snapshot.ref).then(async (downloadURL) => {
         qrcodeData.value = await QRcode.toDataURL(downloadURL)
+        postersStore.setResultImgName(uniqueName)
       })
     }).catch((error) => {
       console.error(error);
-    });
+    })
   } catch (e) {
     console.error(e);
   }
 }
 
 onMounted(() => {
+  if(postersStore.selectedMovie === null)
+    navigateTo('/generator/step/select')
+  
   uploadPoster()
 })
 </script>

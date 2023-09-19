@@ -3,13 +3,13 @@ import { usePostersStore } from '@/stores/posters'
 
 
 export default defineNuxtRouteMiddleware((to, from) => {
-    const permissionStore = usePermissionStore()
-    const postersStore = usePostersStore()
+  const postersStore = usePostersStore()
+  let permission = null
 
-    if(!permissionStore.isEnter) {
-      return navigateTo('/')
-    }
-    else if(!postersStore.selfieBase64) {
-      return navigateTo('/generator/step/select')
-    }
+  if (process.client)
+    permission = JSON.parse(localStorage.getItem('permission'))
+
+  if (process.client && permission && !permission.isEnter) {
+    return navigateTo('/')
+  }
 })

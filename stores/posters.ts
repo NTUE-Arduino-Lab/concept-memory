@@ -121,18 +121,18 @@ const sdData = {
 interface State {
     movies: Array<MovieState>
     selfieBase64: string | null
-    selectedMovie: number
+    selectedMovie: number | null
     resultImgBase64: string | null
     sdRequestData: Object
-    resultImgName: string
-    qrcodeUrl: string
+    resultImgName: string | null
+    qrcodeUrl: string | null
 }
 
 export const usePostersStore = defineStore('posters', {
     state: (): State => ({
         movies: movieData,
         selfieBase64: null,
-        selectedMovie: 0,
+        selectedMovie: null,
         resultImgBase64: null,
         sdRequestData: sdData,
         resultImgName: null,

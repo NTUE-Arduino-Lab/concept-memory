@@ -1,9 +1,4 @@
 <script setup lang="ts">
-// // check permission
-// definePageMeta({
-//   middleware: 'permission'
-// })
-
 const handleClickBackBtn = () => {
   navigateTo('/generator/step/camera')
 }
