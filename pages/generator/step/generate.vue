@@ -12,7 +12,7 @@ const requestData = useState('requestData', () => postersStore.sdRequestData)
 const loading = useState('loading', () => true)
 const canvas = ref<HTMLCanvasElement | null>(null)
 
-const { pending: pending, data: poster, error: error } = useFetch('https://aiposter.iiiedu.net:7860/sdapi/v1/txt2img', {
+const { pending: pending, data: poster, error: error } = useFetch('https://localhost:7860/sdapi/v1/txt2img', {
     method: 'post',
     lazy: true,
     body: requestData,
