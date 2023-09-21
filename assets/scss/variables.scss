@@ -11,6 +11,10 @@
     font-size: 18px;
     letter-spacing: 2px;
     cursor: pointer;
+
+    &:active {
+        background-color: $primary-dark;
+    }
 }
 
 @mixin font($style, $size, $weight) {
