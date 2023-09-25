@@ -5,44 +5,47 @@ const movieData: Array<MovieState> = [
     {
         name: "海角七號",
         year: 2008,
-        // keywords: null
-    },
-    {
-        name: "灣生回家",
-        year: 2015,
-        // keywords: []
-    },
-    {
-        name: "誰先愛上他的",
-        year: 2018,
-        // keywords: []
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>, ,(poster:0.6), man standing on a beach next to the ocean with a stamp on it that says cape no 7,sunset,postmark,solo,1man,shirt pants,",
+        negative_prompt_value: " (worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text, glasses,sunglasses,",
+        id: 0
     },
     {
         name: "我的少女時代",
         year: 2015,
-        // keywords: []
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,  1girl ,solo, holding a book ,(school uniform,school ),(poster:0.6),round glasses, corridor,cowboy shot, happy,youth,classmate,classroom ,laughing,",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text, glasses,sunglasses,man",
+        id: 3
     },
     {
         name: "當男人戀愛時",
         year: 2021,
-        // keywords: []
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1> a man sitting on a ladder eating popsicle, serial art,1man,ladder",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,chinese text, signature, watermark,",
+        id: 4
     },
     {
         name: "月老",
         year: 2021,
-        // keywords: []
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1> a man standing in front of a city street with a cross on it,(school uniform suit), red string ,(poster:0.6),neo-romanticism,upper body, close up,",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text, glasses,sunglasses,1girl,woman,long hair",
+        
+        id: 5
     },
     {
         name: "KANO",
         year: 2014,
-        // keywords: []
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>, a baseball team in front of a stadium,pitcher solo, baseball,asian ,(poster:0.6),1boy,",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,",
+        id: 6
     },
 ]
 
 interface MovieState {
     name: string
     year: number
-    keywords?: [string]
+    prompt_value: string
+    negative_prompt_value: string
+    id: number
 }
 
 //ReActor arguments
@@ -66,9 +69,6 @@ const args = [
     false
 ]
 
-const prompt_value = "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,  1girl ,solo, holding a book ,(school uniform,school ),(poster:0.6),round glasses, corridor,cowboy shot, happy,youth,classmate,classroom ,laughing,"
-const negative_prompt_value = "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text, glasses,sunglasses,man"
-
 //設定預設的參數
 const sdData = {
     "enable_hr": true,
@@ -83,7 +83,8 @@ const sdData = {
     "hr_sampler_name": "",
     "hr_prompt": "",
     "hr_negative_prompt": "",
-    "prompt": prompt_value,
+    //"prompt":  prompt_value
+    "prompt": null,
     "styles": [""],
     "seed": -1,
     "subseed": -1,
@@ -95,13 +96,14 @@ const sdData = {
     "n_iter": 1,
     "steps": 20,
     "cfg_scale": 5,
-    "width": 512,
-    "height": 768,
+    "width": 480,
+    "height": 640,
     "restore_faces": false,
     "tiling": false,
     "do_not_save_samples": false,
     "do_not_save_grid": false,
-    "negative_prompt": negative_prompt_value,
+    //"negative_prompt": negative_prompt_value
+    "negative_prompt": null,
     "eta": 0,
     "s_min_uncond": 0,
     "s_churn": 0,
@@ -141,6 +143,9 @@ export const usePostersStore = defineStore('posters', {
     actions: {
         setSelectedMovie(selectedMovie: number): void {
             this.selectedMovie = selectedMovie
+
+            this.sdRequestData.prompt = movieData[selectedMovie].prompt_value
+            this.sdRequestData.negative_prompt = movieData[selectedMovie].negative_prompt_value
         },
         setSelfieBase64(imgBase64: string | null): void {
             this.selfieBase64 = imgBase64
