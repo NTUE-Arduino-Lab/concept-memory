@@ -36,8 +36,8 @@ const handleClickNextBtn = () => {
         <label :for="item.name" name="selector">
           <div v-if="idx === selectedMovie || selectedMovie === -1" class="selected-bg"></div>
           <!-- <img :src="`/assets/img/movies/movie${idx}.jpg`" alt="" :srcset="`/assets/img/movies/movie${idx}.jpg 1x, /assets/img/movies/movie${idx}@2x.jpg 2x`"> -->
-          <img :src="`/img/movies/movie${idx}.jpg`" alt=""
-            :srcset="`/img/movies/movie${idx}.jpg 1x, /img/movies/movie${idx}@2x.jpg 2x`">
+          <img :src="`/img/movies/movie${item.id}.jpg`" alt=""
+            :srcset="`/img/movies/movie${item.id}.jpg 1x, /img/movies/movie${item.id}@2x.jpg 2x`">
           <span>{{ item.name }}</span>
           <span>{{ item.year }}</span>
         </label>
