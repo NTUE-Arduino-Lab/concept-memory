@@ -12,7 +12,7 @@ const requestData = useState('requestData', () => postersStore.sdRequestData)
 const loading = useState('loading', () => true)
 const canvas = ref<HTMLCanvasElement | null>(null)
 
-// const url = "https://aiposter.iiiedu.net/sdapi/sdapi/v1/txt2img"
+// const url = "https://aiposter.iiiedu.net/api/sdapi/v1/txt2img"
 const url = "http://44.218.216.41:7860/sdapi/v1/txt2img"
 
 const { pending: pending, data: poster, error: error } = useFetch(url, {
@@ -62,7 +62,7 @@ onMounted(() => {
 })
 
 watch(pending, value => {
-    if (!pending.value) {
+    if (!pending.value && !error) {
         drawCanvas(poster._rawValue.images[0])
         loading.value = false
     }
