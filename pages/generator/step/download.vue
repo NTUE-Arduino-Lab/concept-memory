@@ -13,8 +13,7 @@ const postersStore = usePostersStore()
 
 const { $storage } = useNuxtApp()
 
-const posterUrl = useState('posterUrl', () => [])
-const qrcodeData = useState('qrcodeData', () => [])
+const qrcodeData = useState('qrcodeData', () => null)
 
 const handleClickDownloadBtn = () => {
   saveAs(postersStore.resultImgBase64, "poster");
@@ -62,7 +61,8 @@ onMounted(() => {
     <div class="content-container">
       <img class="result-img" :src="postersStore.resultImgBase64" alt="" />
       <div class="download-container">
-        <img :src="qrcodeData" class="qrcode"/>
+        <img v-if="qrcodeData" :src="qrcodeData" class="qrcode"/>
+        <Icon v-if="!qrcodeData" name="eos-icons:loading" size="28" class="qrcode" />
         <div class="guide-container">
           <span>請掃描下載</span>
           <span>OR</span>
