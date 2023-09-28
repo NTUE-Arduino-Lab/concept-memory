@@ -62,7 +62,7 @@ onMounted(() => {
 })
 
 watch(pending, value => {
-    if (!pending.value && !error) {
+    if (!pending.value) {
         drawCanvas(poster._rawValue.images[0])
         loading.value = false
     }
