@@ -96,6 +96,45 @@ onMounted(() => {
   align-items: center;
 }
 
+
+
+@media screen and (max-width: 960px) {
+  .example-container {
+    img:nth-child(2n-1) {
+      width: 175px;
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 760px) {
+  .example-container {
+    // margin-bottom: 28px;
+    grid-template-columns: repeat(3, max-content);
+    grid-template-rows: max-content 80px max-content;
+    align-items: center;
+    justify-content: center;
+
+    img:nth-child(2n-1) {
+      width: 130px;
+    }
+
+    img:nth-child(4) {
+      transform: rotate(90deg);
+      display: block;
+      grid-column: 1/4;
+      justify-self: center;
+    }
+
+    img:nth-child(5) {
+      display: block;
+      grid-column: 1/4;
+      justify-self: center;
+    }
+  }
+}
+
 // Checkboxes
 
 // Variables
@@ -149,7 +188,7 @@ input[type="checkbox"]:checked {
   display: inline-block;
   position: relative;
   cursor: pointer;
-  color: $text-black;
+  color: $black;
   letter-spacing: 1px;
   margin-left: 10px;
   @include font(normal, 16px, 700);
@@ -174,17 +213,26 @@ input[type="text"] {
   width: 200px;
   height: 90%;
   @include font(serif, 20px, 700);
-  color: $text-gray;
+  color: $gray-400;
   text-align: center;
   padding: 0;
   outline: none;
 }
 
-
 // button
 button {
   @include primary-button(100%);
   margin-left: 4px;
+}
+
+@media screen and (max-width: 760px) {
+  .checkbox-container {
+    width: 320px;
+  }
+
+  .checkbox-container>label {
+    @include font(normal, 14px, 700);
+  }
 }
 
 //info
@@ -205,7 +253,7 @@ button {
 
   p {
     z-index: 1;
-    @include font(serif, 26px, 700);
+    @include font(serif, 24px, 700);
     line-height: 40px;
     color: $primary-dark;
     margin-right: 63px;
@@ -213,9 +261,44 @@ button {
     &:last-child {
       margin-right: 0px;
       margin-left: 63px;
-      color: $text-black;
+      color: $black;
       line-height: 30px;
       font-size: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .info-container {
+    padding-left: 30px;
+    padding-right: 30px;
+
+    p {
+      margin-right: 30px;
+
+      &:last-child {
+        @include font(serif, 20px, 700);
+        margin-left: 30px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .info-container {
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    height: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    p {
+      margin-right: 0px;
+
+      &:last-child {
+        margin-left: 0px;
+      }
     }
   }
 }
@@ -223,6 +306,6 @@ button {
 .warning {
   margin-top: 12px;
   @include font(serif, 16px, 700);
-  color: $text-danger;
+  color: $warning;
 }
 </style>
