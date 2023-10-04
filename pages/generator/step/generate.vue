@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { usePostersStore } from '@/stores/posters'
-import imgFrameBase64 from '@/assets/imgFrameBase64'
 
 // check permission
 definePageMeta({
@@ -37,7 +36,8 @@ const drawCanvas = async (imgBase64: string) => {
     img.src = `data:image/jpeg;base64, ${imgBase64}`
 
     const img2 = new Image()
-    img2.src = `data:image/jpeg;base64, ${imgFrameBase64}`
+
+    img2.src = `data:image/jpeg;base64, ${postersStore.movies[postersStore.selectedMovie].frame}`
 
     const drawImage = (image: HTMLImageElement) => {
         return new Promise((resolve) => {
