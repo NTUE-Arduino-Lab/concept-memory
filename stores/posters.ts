@@ -1,5 +1,25 @@
 import { defineStore } from 'pinia'
 // import imgBase64 from 'assets/testImgBase64'
+import frame1 from '@/assets/img/outline/frame1'
+import frame2 from '@/assets/img/outline/frame2'
+import frame3 from '@/assets/img/outline/frame3'
+import frame4 from '@/assets/img/outline/frame4'
+import frame5 from '@/assets/img/outline/frame5'
+import frame6 from '@/assets/img/outline/frame6'
+import frame7 from '@/assets/img/outline/frame7'
+import frame8 from '@/assets/img/outline/frame8'
+// import frame9 from '@/assets/img/outline/frame9'
+// import frame10 from '@/assets/img/outline/frame10'
+// import frame11 from '@/assets/img/outline/frame11'
+// import frame12 from '@/assets/img/outline/frame12'
+// import frame13 from '@/assets/img/outline/frame13'
+// import frame14 from '@/assets/img/outline/frame14'
+// import frame15 from '@/assets/img/outline/frame15'
+// import frame16 from '@/assets/img/outline/frame16'
+// import frame17 from '@/assets/img/outline/frame17'
+// import frame18 from '@/assets/img/outline/frame18'
+// import frame20 from '@/assets/img/outline/frame20'
+// import frame21 from '@/assets/img/outline/frame21'
 
 const movieData: Array<MovieState> = [
     {
@@ -7,36 +27,40 @@ const movieData: Array<MovieState> = [
         year: 2008,
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>, ,(poster:0.6), man standing on a beach next to the ocean with a stamp on it that says cape no 7,sunset,postmark,solo,1man,shirt pants,",
         negative_prompt_value: " (worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text, glasses,sunglasses,",
-        id: 0
+        id: 0,
+        frame: frame1
     },
     {
         name: "我的少女時代",
         year: 2015,
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,  1girl ,solo, holding a book ,(school uniform,school ),(poster:0.6),round glasses, corridor,cowboy shot, happy,youth,classmate,classroom ,laughing,",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text, glasses,sunglasses,man",
-        id: 3
+        id: 3,
+        frame: frame3
     },
     {
         name: "當男人戀愛時",
         year: 2021,
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1> a man sitting on a ladder eating popsicle, serial art,1man,ladder",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,chinese text, signature, watermark,",
-        id: 4
+        id: 4,
+        frame: frame4
     },
     {
         name: "月老",
         year: 2021,
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1> a man standing in front of a city street with a cross on it,(school uniform suit), red string ,(poster:0.6),neo-romanticism,upper body, close up,",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text, glasses,sunglasses,1girl,woman,long hair",
-        
-        id: 5
+        id: 5,
+        frame: frame5
     },
     {
         name: "KANO",
         year: 2014,
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>, a baseball team in front of a stadium,pitcher solo, baseball,asian ,(poster:0.6),1boy,",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,",
-        id: 6
+        id: 6,
+        frame: frame6
     },
 ]
 
@@ -46,6 +70,7 @@ interface MovieState {
     prompt_value: string
     negative_prompt_value: string
     id: number
+    frame: string
 }
 
 //ReActor arguments
