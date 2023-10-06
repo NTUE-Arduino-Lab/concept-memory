@@ -6,6 +6,14 @@ const showMenu = useState('showMenu', () => false)
 const handleMenuShow = () => {
   showMenu.value = !showMenu.value
 }
+
+const clearMenuShow = () => {
+  showMenu.value = false
+}
+
+onMounted(() => {
+  console.log("aa")
+})
 </script>
 
 <template>
@@ -41,13 +49,13 @@ const handleMenuShow = () => {
       <h1>AI 記憶造浪者：<br>超時空電影海報繪師</h1>
     </div>
     <div class="line"></div>
-    <NuxtLink to="/" class="nav-link">
+    <NuxtLink to="/" class="nav-link" @click="clearMenuShow">
       首頁
     </NuxtLink>
-    <NuxtLink to="/posters" class="nav-link">
+    <NuxtLink to="/posters" class="nav-link" @click="clearMenuShow">
       海報牆
     </NuxtLink>
-    <NuxtLink to="https://tcmb.culture.tw/zh-tw" class="nav-link" target="_blank">
+    <NuxtLink to="https://tcmb.culture.tw/zh-tw" target="_blank" class="nav-link" @click="clearMenuShow">
       更多電影故事
     </NuxtLink>
   </div>
