@@ -107,6 +107,7 @@ onMounted(() => {
       grid-template-columns: auto;
       align-items: center;
       justify-content: center;
+      justify-items: center;
     }
 
     .result-img {
