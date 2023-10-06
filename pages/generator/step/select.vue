@@ -157,11 +157,11 @@ select {
     height: 40px;
     border: 2px $primary-default solid;
     border-radius: 4px;
-    width: 240px;
+    width: min-content;
     @include font(normal, 16px, 700);
     color: $gray-500;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 20px;
     margin-bottom: 40px;
     -webkit-appearance: none;
     -moz-appearance: none;
