@@ -4,6 +4,7 @@ import { ref, listAll, getDownloadURL } from "firebase/storage";
 const { $storage } = useNuxtApp()
 
 const posters = useState('posters', () => [])
+const modalImg = useState('modalImg', () => null)
 
 const getPosters = async () => {
   try {
@@ -28,6 +29,14 @@ const getPosters = async () => {
   }
 }
 
+const handleClickImg = (imgUrl) => {
+  modalImg.value = imgUrl
+}
+
+const handleClickModalClose = () => {
+  modalImg.value = null
+}
+
 onMounted(() => {
   getPosters()
 })
@@ -43,14 +52,23 @@ onMounted(() => {
     </div>
     <div v-if="posters.length > 0" class="posters-container">
       <div class="posters-list">
-        <img v-for="item, idx in posters" :src="item.url" :key="item.name">
+        <img v-for="item, idx in posters" :src="item.url" :key="item.name" v-on:click="handleClickImg(item.url)">
       </div>
+    </div>
+
+    <div v-if="modalImg" class="modal">
+      <div class="modal-bg" v-on:click="handleClickModalClose"></div>
+      <img class="modal-poster" :src="modalImg">
     </div>
   </main>
 </template>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/variables.scss';
+
+main {
+  padding-bottom: 0px;
+}
 
 .title-container {
   @extend %title-container;
@@ -74,14 +92,14 @@ onMounted(() => {
   .posters-list {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 162px);
-    grid-column-gap: 28px;
+    grid-template-columns: repeat(auto-fill, 250px);
+    grid-column-gap: 20px;
     grid-row-gap: 20px;
     justify-content: center;
 
     img {
-      width: 162px;
-      height: 215px;
+      width: 100%;
+      cursor: pointer;
     }
   }
 
@@ -113,5 +131,29 @@ onMounted(() => {
       padding-right: 0;
     }
   }
+}
+
+.modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min-content;
+
+  .modal-bg {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .5);
+    width: 100vw;
+    height: 1200px;
+    z-index: 1;
+  }
+
+  .modal-poster {
+    max-height: 80vh;
+    height: auto;
+    z-index: 2;
+    max-width: 80vw;
+  }
+
 }
 </style>
