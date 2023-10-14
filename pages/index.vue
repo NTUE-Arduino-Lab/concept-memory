@@ -76,7 +76,8 @@ onMounted(() => {
         <div class="custom-checkbox"></div>
         <Icon v-if="isChecked" name="material-symbols:fitbit-check-small" color="white" size="28" />
       </div>
-      <label for="checkbox">我同意我的<span>個人資料</span>及<span>肖像權</span>使用於國家文化記憶庫AI生成、海報牆及成果展</label>
+      <label for="checkbox">本人認知並同意本人肖像將於國家文化記憶庫《AI
+        記憶造浪者：超時空電影繪師》專案及其成果展對外呈現使用，亦了解本人肖像不會因參與前述專案而同意作為其他利用，且未因此而同意他人作為AI訓練或其他目的之利用。</label>
     </div>
     <div class="enter-container">
       <input type="text" placeholder="輸入活動碼" v-model="inputCode" />
@@ -145,7 +146,8 @@ $checkbox-width: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 340px;
+  max-width: 700px;
+  width: 80%;
 }
 
 .custom-checkbox-container {
@@ -192,10 +194,6 @@ input[type="checkbox"]:checked {
   letter-spacing: 1px;
   margin-left: 10px;
   @include font(normal, 16px, 700);
-
-  & span {
-    text-decoration: underline;
-  }
 }
 
 // enter
@@ -226,9 +224,6 @@ button {
 }
 
 @media screen and (max-width: 760px) {
-  .checkbox-container {
-    width: 320px;
-  }
 
   .checkbox-container>label {
     @include font(normal, 14px, 700);
