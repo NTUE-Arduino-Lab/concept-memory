@@ -43,9 +43,9 @@ const uploadPoster = async () => {
 }
 
 onMounted(() => {
-  if(postersStore.selectedMovie === null)
+  if (postersStore.selectedMovie === null)
     navigateTo('/generator/step/select')
-  
+
   uploadPoster()
 })
 </script>
@@ -61,7 +61,7 @@ onMounted(() => {
     <div class="content-container">
       <img class="result-img" :src="postersStore.resultImgBase64" alt="" />
       <div class="download-container">
-        <img v-if="qrcodeData" :src="qrcodeData" class="qrcode"/>
+        <img v-if="qrcodeData" :src="qrcodeData" class="qrcode" />
         <Icon v-if="!qrcodeData" name="eos-icons:loading" size="28" class="qrcode" />
         <div class="guide-container">
           <span>請掃描下載</span>
@@ -70,7 +70,8 @@ onMounted(() => {
         </div>
       </div>
       <div class="info-container">
-        <img src="@/assets/img/info-bg.png" alt="" srcset="@/assets/img/info-bg.png 1x, @/assets/img/info-bg@2x.png 2x">
+        <img class="info-bg" src="@/assets/img/info-bg.png" alt="" srcset="@/assets/img/info-bg.png 1x, @/assets/img/info-bg@2x.png 2x">
+        <img class="info-bg-s" src="@/assets/img/info-bg-s.png" alt="" srcset="@/assets/img/info-bg-s.png 1x, @/assets/img/info-bg-s@2x.png 2x">
         <span class="text-title">贈禮小活動</span>
         <span>將你的專屬手繪風格海報上傳<span class="text-underline">Facebook 公開</span>、<span class="text-underline">Tag
             國家文化記憶庫</span>即有機會獲得<span class="text-warning">小禮物</span>唷！</span>
@@ -93,9 +94,26 @@ onMounted(() => {
   margin-bottom: 160px;
 
   .result-img {
-    width: 340px;
+    max-width: 340px;
+    width: 90vw;
+    min-width: 320px;
     grid-row: 1/3;
     margin-right: 100px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    & {
+      width: 100vw;
+      grid-template-columns: auto;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+    }
+
+    .result-img {
+      margin-right: 0px;
+      margin-bottom: 40px;
+    }
   }
 }
 
@@ -107,6 +125,16 @@ onMounted(() => {
 
   .qrcode {
     width: 200px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    & {
+      align-items: center;
+    }
+
+    .qrcode {
+      width: 150px;
+    }
   }
 }
 
@@ -120,12 +148,12 @@ onMounted(() => {
   span {
     display: block;
     text-align: center;
-    color: $text-black;
+    color: $black;
     @include font(serif, 20px, 700);
   }
 
   span:first-child {
-    color: $text-black;
+    color: $black;
     @include font(serif, 28px, 700);
     margin-bottom: 9px;
   }
@@ -149,12 +177,16 @@ onMounted(() => {
     left: 0;
   }
 
+  .info-bg-s {
+    display: none;
+  }
+
   span {
     position: relative;
     z-index: 1;
     display: block;
     width: 100%;
-    color: $text-black;
+    color: $black;
     @include font(serif, 20px, 700);
   }
 
@@ -171,7 +203,27 @@ onMounted(() => {
 
   .text-warning {
     display: inline;
-    color: $text-danger;
+    color: $warning;
+  }
+
+  @media screen and (max-width: 1000px) {
+    & {
+      width: 360px;
+      padding: 38px 48px;
+      justify-content: center;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .info-bg {
+      display: none;
+    }
+
+    .info-bg-s {
+      display: block;
+    }
   }
 }
 

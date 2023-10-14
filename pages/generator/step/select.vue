@@ -25,11 +25,17 @@ const handleClickNextBtn = () => {
   <main>
     <div class="title-container">
       <span>壹</span>
-      <span v-for="char in '選擇熱門近代電影'">
+      <span v-for="char in '選擇電影海報風格'">
         {{ char }}
       </span>
     </div>
     <div class="guide">提供臺灣近代電影海報，選擇你喜歡的電影元素</div>
+    <select v-model="selectedMovie">
+      <option v-for="item, idx in movies" :key="item.name" :value="idx">{{ `${item.name}(${item.year})` }}</option>
+    </select>
+    <img v-for="item, idx in movies" :class="`poster ${selectedMovie == idx ? 'poster-show' : ''}`"
+      :src="`/img/movies/movie${item.id}.jpg`" alt=""
+      :srcset="`/img/movies/movie${item.id}.jpg 1x, /img/movies/movie${item.id}@2x.jpg 2x`">
     <ul>
       <li v-for="item, idx in movies" :key="item.name">
         <input type="radio" :id="item.name" name="selector" v-model="selectedMovie" :value="idx">
@@ -52,7 +58,15 @@ const handleClickNextBtn = () => {
 @import '@/assets/scss/variables.scss';
 
 .title-container {
-  @extend %title-container
+  @extend %title-container;
+
+  @media screen and (max-width: 540px) {
+
+    & span:nth-child(4),
+    & span:nth-child(5) {
+      display: none;
+    }
+  }
 }
 
 .guide {
@@ -67,6 +81,12 @@ ul {
   width: 100%;
   padding: 0;
   margin-bottom: 40px;
+
+  @media screen and (max-width: 760px) {
+    & {
+      display: none;
+    }
+  }
 }
 
 li {
@@ -114,12 +134,53 @@ li {
 }
 
 .selected {
-  color: $text-black;
+  color: $black;
   @include font(normal, 18px, 700);
   margin-bottom: 16px;
 }
 
 button {
   @include primary-button(50px);
+}
+
+.poster {
+  display: none;
+}
+
+select {
+  display: none;
+}
+
+@media screen and (max-width: 760px) {
+  select {
+    display: block;
+    height: 40px;
+    border: 2px $primary-default solid;
+    border-radius: 4px;
+    width: min-content;
+    @include font(normal, 16px, 700);
+    color: $gray-500;
+    padding-left: 10px;
+    padding-right: 20px;
+    margin-bottom: 40px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url("@/assets/img/select-btn.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 14px;
+    background-size: 12px;
+  }
+
+  .poster {
+    width: 280px;
+    margin-bottom: 40px;
+    display: none;
+  }
+
+  .poster-show {
+    display: block;
+  }
 }
 </style>

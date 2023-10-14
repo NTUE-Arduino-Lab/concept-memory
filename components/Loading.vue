@@ -43,6 +43,8 @@ const handleClickBackBtn = () => {
 .loading {
   margin-top: 42px;
   margin-bottom: 52px;
+  width: 90vw;
+  max-width: 600px;
 }
 
 button {

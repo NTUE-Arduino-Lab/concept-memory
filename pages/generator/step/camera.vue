@@ -35,7 +35,7 @@ const handleClickNextBtn = () => {
 const startCamera = async () => {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true })
-    
+
     if (videoRef.value && stream) {
       videoRef.value.srcObject = stream
     }
@@ -94,9 +94,9 @@ const stopCamera = () => {
 }
 
 onMounted(() => {
-  if(postersStore.selectedMovie === null)
+  if (postersStore.selectedMovie === null)
     navigateTo('/generator/step/select')
-  
+
   isPhotoTaken.value = false
   postersStore.setSelfieBase64(null)
   startCamera()
@@ -143,16 +143,37 @@ onMounted(() => {
   height: 450px;
   margin-bottom: 36px;
   z-index: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 
-  video,
-  canvas {
+  &>canvas {
     width: 100%;
     height: 100%;
+  }
+
+  &>video {
+    width: 600px;
+    height: 450px;
+    object-fit: cover;
   }
 
   &~div {
     z-index: 1;
   }
+
+  @media screen and (max-width: 680px) {
+    & {
+      width: 300px;
+      height: 450px;
+    }
+
+    &>canvas {
+      width: 600px;
+    }
+  }
+
 }
 
 button {

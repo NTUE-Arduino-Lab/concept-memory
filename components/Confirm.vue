@@ -49,7 +49,9 @@ const handleClickNextBtn = () => {
   margin-bottom: 60px;
 
   .poster {
-    width: 340px;
+    max-width: 340px;
+    width: 90vw;
+    min-width: 300px;
     height: auto;
   }
 }
