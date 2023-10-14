@@ -92,7 +92,7 @@ main {
   .posters-list {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 250px);
+    grid-template-columns: repeat(auto-fill, 200px);
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     justify-content: center;
