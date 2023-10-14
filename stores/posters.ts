@@ -25,43 +25,171 @@ const movieData: Array<MovieState> = [
     {
         name: "海角七號",
         year: 2008,
-        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>, ,(poster:0.6), man standing on a beach next to the ocean with a stamp on it that says cape no 7,sunset,postmark,solo,1man,shirt pants,",
-        negative_prompt_value: " (worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text, glasses,sunglasses,",
-        id: 0,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),hug each other at the beach, sunset, a man, a woman, romantic, look forward, asian, medium shot, T-shirt, jeans, skirt",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 1,
         frame: frame1
+    },
+    {
+        name: "那些年，我們一起追的女孩",
+        year: 2011,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),sitting on the breakwater, a boy, a girl, sunny, college student, smile, full body, t-shirt, short pants, looking away, asian, ",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 2,
+        frame: frame2
     },
     {
         name: "我的少女時代",
         year: 2015,
-        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,  1girl ,solo, holding a book ,(school uniform,school ),(poster:0.6),round glasses, corridor,cowboy shot, happy,youth,classmate,classroom ,laughing,",
-        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text, glasses,sunglasses,man",
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),holding books, a boy and a girl, laugh, school uniform, satchel bag, school, classroom, asian, bob cut, glasses,",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 3,
         frame: frame3
     },
     {
         name: "當男人戀愛時",
         year: 2021,
-        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1> a man sitting on a ladder eating popsicle, serial art,1man,ladder",
-        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,chinese text, signature, watermark,",
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),couple, a man wear an unbuttoned floral shirt, a woman wear an uniform, siting on the rooftop staircase and eating ice popsicles, medium shot,",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 4,
         frame: frame4
     },
     {
         name: "月老",
         year: 2021,
-        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1> a man standing in front of a city street with a cross on it,(school uniform suit), red string ,(poster:0.6),neo-romanticism,upper body, close up,",
-        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text, glasses,sunglasses,1girl,woman,long hair",
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),a woman with pink hair and a man with black hair, index finger with red line, school uniform, fantasy, street scenery, night, halo light surrounds them, looking at finder, Asian, magic",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 5,
         frame: frame5
     },
     {
         name: "KANO",
         year: 2014,
-        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>, a baseball team in front of a stadium,pitcher solo, baseball,asian ,(poster:0.6),1boy,",
-        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,",
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),a baseball team in front of a stadium, pitcher, baseball, Asian, a person, Asian, close up portrait.",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 6,
         frame: frame6
     },
+    {
+        name: "返校",
+        year: 2019,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),a student, , (holding a red lit candle:1.3), standing on the school hall way, horror, Asian, dark, bob cut, white blouse and a black knee-length pleated skirt",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 7,
+        frame: frame6
+    },
+    {
+        name: "關於我和鬼變成家人的那件事",
+        year: 2023,
+        prompt_value: "(Masterpiece, best quality: 1.3) <lora:oldposter2:1>,(poster:0.6),two men, (police uniform: 1.3),  a red sweater, Taiwanese temple roof background, yellow warning tape, facing the camera, wide angle shot, dynamic composition",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 8,
+        frame: frame6
+    },
+    {
+        name: "比悲傷更悲傷的故事",
+        year: 2018,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),coffee shop, a couple is drinking coffee, sitting by the windows, rainning outside",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 9,
+        frame: frame6
+    },
+    {
+        name: "紅衣小女孩2",
+        year: 2019,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),coffee shop, a couple is drinking coffee, sitting by the windows, rainning outside",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 10,
+        frame: frame6
+    },
+    {
+        name: "痞子英雄首部曲：全面開戰",
+        year: 2012,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),criminal police, mafia, running and holding guns on the road, building was exploded. Asian",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 11,
+        frame: frame6
+    },
+    {
+        name: "等一個人咖啡",
+        year: 2014,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),couple, coffee shop, drinking coffee, sitting by the windows, raining outside, close shot, Asian, T-shirt, jeans, ",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 12,
+        frame: frame6
+    },
+    {
+        name: "孤味",
+        year: 2017,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),grandmother and woman are cooking together, happiness, kitchen, Asian",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 13,
+        frame: frame6
+    },
+    {
+        name: "樓下的房客",
+        year: 2016,
+        prompt_value: "(Masterpiece, best quality: 1.3) <lora:oldposter2:1>,(poster:0.6),A psychotic man wear green and plaid nightgown and sits in front of many monitors, the wall background is filled with nine screens which no signal, evil smile, Asian, strange, dark room, nervous, anchor beard, neon lamp,",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 14,
+        frame: frame6
+    },
+    {
+        name: "色，戒",
+        year: 2007,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),couple, a woman wears green cheongsam and a man wear black suit and sits on the wood chair, hotel room, Asian, night shanghai, mystery",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 15,
+        frame: frame6
+    },
+    {
+        name: "不能說的·秘密",
+        year: 2007,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),A couple, school uniform, sitting on the riverbank, back-to-back, Asian, sunset, close up portrait, music story.",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 16,
+        frame: frame6
+    },
+    {
+        name: "藍色大門",
+        year: 2002,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),a couple, sitting on the top floor, school uniform, school, smile, sky, sunny, romantic, Asian",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 17,
+        frame: frame6
+    },
+    {
+        name: "返校",
+        year: 2019,
+        prompt_value: "",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 7,
+        frame: frame6
+    },
+    {
+        name: "一家子兒咕咕叫",
+        year: 2022,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),Family members stand on the grassy field, gazing at the sky. Someone releases racing pigeons. close up portrait, Asian,",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 18,
+        frame: frame6
+    },
+    {
+        name: "消失的情人節",
+        year: 2020,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),A man is a bus driver, closing his eyes, (holding a camera:1.3), smiling, front view, Asian, beach car window background,",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 20,
+        frame: frame6
+    },
+    {
+        name: "陣頭",
+        year: 2012,
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),A person, (playing a large drum:1.3),Taiko , standing, in front of the Taiwanese temple gate, open mouth, exciting, Asian, culture, intense expression",
+        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
+        id: 21,
+        frame: frame6
+    }
 ]
 
 interface MovieState {

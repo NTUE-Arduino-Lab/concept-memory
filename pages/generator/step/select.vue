@@ -29,7 +29,7 @@ const handleClickNextBtn = () => {
         {{ char }}
       </span>
     </div>
-    <div class="guide">提供 20 張臺灣近代電影海報，選擇你喜歡的電影元素</div>
+    <div class="guide">提供臺灣近代電影海報，選擇你喜歡的電影元素</div>
     <ul>
       <li v-for="item, idx in movies" :key="item.name">
         <input type="radio" :id="item.name" name="selector" v-model="selectedMovie" :value="idx">
