@@ -10,10 +10,6 @@ const handleMenuShow = () => {
 const clearMenuShow = () => {
   showMenu.value = false
 }
-
-onMounted(() => {
-  console.log("aa")
-})
 </script>
 
 <template>
