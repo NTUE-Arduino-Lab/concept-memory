@@ -8,18 +8,18 @@ import frame5 from '@/assets/img/outline/frame5'
 import frame6 from '@/assets/img/outline/frame6'
 import frame7 from '@/assets/img/outline/frame7'
 import frame8 from '@/assets/img/outline/frame8'
-// import frame9 from '@/assets/img/outline/frame9'
-// import frame10 from '@/assets/img/outline/frame10'
-// import frame11 from '@/assets/img/outline/frame11'
-// import frame12 from '@/assets/img/outline/frame12'
-// import frame13 from '@/assets/img/outline/frame13'
-// import frame14 from '@/assets/img/outline/frame14'
-// import frame15 from '@/assets/img/outline/frame15'
-// import frame16 from '@/assets/img/outline/frame16'
-// import frame17 from '@/assets/img/outline/frame17'
-// import frame18 from '@/assets/img/outline/frame18'
-// import frame20 from '@/assets/img/outline/frame20'
-// import frame21 from '@/assets/img/outline/frame21'
+import frame9 from '@/assets/img/outline/frame9'
+import frame10 from '@/assets/img/outline/frame10'
+import frame11 from '@/assets/img/outline/frame11'
+import frame12 from '@/assets/img/outline/frame12'
+import frame13 from '@/assets/img/outline/frame13'
+import frame14 from '@/assets/img/outline/frame14'
+import frame15 from '@/assets/img/outline/frame15'
+import frame16 from '@/assets/img/outline/frame16'
+import frame17 from '@/assets/img/outline/frame17'
+import frame18 from '@/assets/img/outline/frame18'
+import frame20 from '@/assets/img/outline/frame20'
+import frame21 from '@/assets/img/outline/frame21'
 
 const movieData: Array<MovieState> = [
     {
@@ -76,7 +76,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),a student, , (holding a red lit candle:1.3), standing on the school hall way, horror, Asian, dark, bob cut, white blouse and a black knee-length pleated skirt",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 7,
-        frame: frame6
+        frame: frame7
     },
     {
         name: "關於我和鬼變成家人的那件事",
@@ -84,7 +84,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(Masterpiece, best quality: 1.3) <lora:oldposter2:1>,(poster:0.6),two men, (police uniform: 1.3),  a red sweater, Taiwanese temple roof background, yellow warning tape, facing the camera, wide angle shot, dynamic composition",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 8,
-        frame: frame6
+        frame: frame8
     },
     {
         name: "比悲傷更悲傷的故事",
@@ -92,7 +92,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),coffee shop, a couple is drinking coffee, sitting by the windows, rainning outside",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 9,
-        frame: frame6
+        frame: frame9
     },
     {
         name: "紅衣小女孩2",
@@ -100,7 +100,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),coffee shop, a couple is drinking coffee, sitting by the windows, rainning outside",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 10,
-        frame: frame6
+        frame: frame10
     },
     {
         name: "痞子英雄首部曲：全面開戰",
@@ -108,7 +108,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),criminal police, mafia, running and holding guns on the road, building was exploded. Asian",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 11,
-        frame: frame6
+        frame: frame11
     },
     {
         name: "等一個人咖啡",
@@ -116,7 +116,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),couple, coffee shop, drinking coffee, sitting by the windows, raining outside, close shot, Asian, T-shirt, jeans, ",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 12,
-        frame: frame6
+        frame: frame12
     },
     {
         name: "孤味",
@@ -124,7 +124,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),grandmother and woman are cooking together, happiness, kitchen, Asian",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 13,
-        frame: frame6
+        frame: frame13
     },
     {
         name: "樓下的房客",
@@ -132,7 +132,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(Masterpiece, best quality: 1.3) <lora:oldposter2:1>,(poster:0.6),A psychotic man wear green and plaid nightgown and sits in front of many monitors, the wall background is filled with nine screens which no signal, evil smile, Asian, strange, dark room, nervous, anchor beard, neon lamp,",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 14,
-        frame: frame6
+        frame: frame14
     },
     {
         name: "色，戒",
@@ -140,7 +140,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),couple, a woman wears green cheongsam and a man wear black suit and sits on the wood chair, hotel room, Asian, night shanghai, mystery",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 15,
-        frame: frame6
+        frame: frame15
     },
     {
         name: "不能說的·秘密",
@@ -148,7 +148,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),A couple, school uniform, sitting on the riverbank, back-to-back, Asian, sunset, close up portrait, music story.",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 16,
-        frame: frame6
+        frame: frame16
     },
     {
         name: "藍色大門",
@@ -156,15 +156,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),a couple, sitting on the top floor, school uniform, school, smile, sky, sunny, romantic, Asian",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 17,
-        frame: frame6
-    },
-    {
-        name: "返校",
-        year: 2019,
-        prompt_value: "",
-        negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
-        id: 7,
-        frame: frame6
+        frame: frame17
     },
     {
         name: "一家子兒咕咕叫",
@@ -172,7 +164,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),Family members stand on the grassy field, gazing at the sky. Someone releases racing pigeons. close up portrait, Asian,",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 18,
-        frame: frame6
+        frame: frame18
     },
     {
         name: "消失的情人節",
@@ -180,7 +172,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),A man is a bus driver, closing his eyes, (holding a camera:1.3), smiling, front view, Asian, beach car window background,",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 20,
-        frame: frame6
+        frame: frame20
     },
     {
         name: "陣頭",
@@ -188,7 +180,7 @@ const movieData: Array<MovieState> = [
         prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),A person, (playing a large drum:1.3),Taiko , standing, in front of the Taiwanese temple gate, open mouth, exciting, Asian, culture, intense expression",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 21,
-        frame: frame6
+        frame: frame21
     }
 ]
 
@@ -280,7 +272,7 @@ interface State {
     resultImgBase64: string | null
     sdRequestData: Object
     resultImgName: string | null
-    qrcodeUrl: string | null
+    downloadUrl: string | null
 }
 
 export const usePostersStore = defineStore('posters', {
@@ -291,7 +283,7 @@ export const usePostersStore = defineStore('posters', {
         resultImgBase64: null,
         sdRequestData: sdData,
         resultImgName: null,
-        qrcodeUrl: null
+        downloadUrl: null
     }),
     actions: {
         setSelectedMovie(selectedMovie: number): void {
@@ -311,8 +303,9 @@ export const usePostersStore = defineStore('posters', {
         setResultImgName(name: string): void {
             this.resultImgName = name
         },
-        setQrcodeUrl(url: string): void {
-            this.qrcodeUrl = url
+        setDownloadUrl(url: string | null): void {
+            console.log(url)
+            this.downloadUrl = url
         }
     },
     getters: {

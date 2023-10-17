@@ -102,6 +102,7 @@ li {
     img {
       position: relative;
       width: 100%;
+      height: 245px;
       display: block;
       margin-bottom: 10px;
     }
@@ -116,7 +117,7 @@ li {
 
     .selected-bg {
       width: 170px;
-      height: 300px;
+      height: 100%;
       padding: 10px;
       top: -10px;
       left: -10px;
