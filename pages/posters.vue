@@ -68,6 +68,7 @@ onMounted(() => {
 
 main {
   padding-bottom: 0px;
+  min-height: 800px;
 }
 
 .title-container {
@@ -81,7 +82,7 @@ main {
 .posters-container {
   position: relative;
   width: 100%;
-  height: min-content;
+  height: 600px;
   max-height: 600px;
   padding: 24px 28px;
   margin-top: 36px;
