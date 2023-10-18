@@ -19,6 +19,7 @@ const getPosters = async () => {
         return Promise.all(promises);
       })
       .then((items) => {
+        items.reverse()
         posters.value = items
       }).catch((e) => {
         console.error(e);
@@ -68,6 +69,7 @@ onMounted(() => {
 
 main {
   padding-bottom: 0px;
+  min-height: 800px;
 }
 
 .title-container {
@@ -81,7 +83,7 @@ main {
 .posters-container {
   position: relative;
   width: 100%;
-  height: min-content;
+  height: 600px;
   max-height: 600px;
   padding: 24px 28px;
   margin-top: 36px;
@@ -92,7 +94,7 @@ main {
   .posters-list {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 200px);
+    grid-template-columns: repeat(auto-fill, 240px);
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     justify-content: center;

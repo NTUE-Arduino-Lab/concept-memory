@@ -304,7 +304,6 @@ export const usePostersStore = defineStore('posters', {
             this.resultImgName = name
         },
         setDownloadUrl(url: string | null): void {
-            console.log(url)
             this.downloadUrl = url
         }
     },
