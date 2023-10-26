@@ -97,7 +97,7 @@ const movieData: Array<MovieState> = [
     {
         name: "紅衣小女孩2",
         year: 2019,
-        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),coffee shop, a couple is drinking coffee, sitting by the windows, rainning outside",
+        prompt_value: "(masterpiece, best quality: 1.3) <lora:oldposter2:1>,(poster:0.6), a little girl in a red dress, squatting on the ground, pale, amusement park ruins, horror, Asia, dark, broken, cloudy, weird atmosphere, spooky creepy",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 10,
         frame: frame10
