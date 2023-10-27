@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-// import imgBase64 from 'assets/testImgBase64'
+//import imgBase64 from 'assets/testImgBase64'
 import frame1 from '@/assets/img/outline/frame1'
 import frame2 from '@/assets/img/outline/frame2'
 import frame3 from '@/assets/img/outline/frame3'
@@ -21,7 +21,7 @@ import frame18 from '@/assets/img/outline/frame18'
 import frame20 from '@/assets/img/outline/frame20'
 import frame21 from '@/assets/img/outline/frame21'
 
-const movieData: Array<MovieState> = [
+let movieData: Array<MovieState> = [
     {
         name: "海角七號",
         year: 2008,
@@ -274,6 +274,8 @@ interface State {
     resultImgName: string | null
     downloadUrl: string | null
 }
+
+movieData = movieData.sort((a,b)=> b.year - a.year)
 
 export const usePostersStore = defineStore('posters', {
     state: (): State => ({
