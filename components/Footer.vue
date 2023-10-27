@@ -13,7 +13,7 @@
             <span>- 合作單位 -</span>
             <li><img src="@/assets/img/NTUE.png" srcset="@/assets/img/NTUE.png 1x, @/assets/img/NTUE@2x.png 2x" /></li>
         </ul>
-        <a herf="https://www.facebook.com/TaiwanCulturalMemoryBank" target="_blank" class="fb-link">
+        <a href="https://www.facebook.com/TaiwanCulturalMemoryBank" target="_blank" class="fb-link">
             <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="22" cy="22" r="21" stroke="#05648A" stroke-width="2" />
                 <path
