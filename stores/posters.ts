@@ -73,7 +73,7 @@ const movieData: Array<MovieState> = [
     {
         name: "返校",
         year: 2019,
-        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),a student, , (holding a red lit candle:1.3), standing on the school hall way, horror, Asian, dark, bob cut, white blouse and a black knee-length pleated skirt",
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),a student, white shirt and a black skirt, (holding a red lit candle:1.3), standing on the school hall way, horror, Asian, dark, bob cut, gloomy",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 7,
         frame: frame7
@@ -81,7 +81,7 @@ const movieData: Array<MovieState> = [
     {
         name: "關於我和鬼變成家人的那件事",
         year: 2023,
-        prompt_value: "(Masterpiece, best quality: 1.3) <lora:oldposter2:1>,(poster:0.6),two men, (police uniform: 1.3),  a red sweater, Taiwanese temple roof background, yellow warning tape, facing the camera, wide angle shot, dynamic composition",
+        prompt_value: "(masterpiece, best quality: 1.3) <lora:oldposter2:1>,(poster:0.6), (police uniform: 1.3) ,a policeman gives a young male a piggy-back ride who wears a red sweater and has curly hair, Asian, Taiwanese temple roof background, facing the camera, wide angle shot, dynamic composition, happy smile, night",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 8,
         frame: frame8
@@ -105,7 +105,7 @@ const movieData: Array<MovieState> = [
     {
         name: "痞子英雄首部曲：全面開戰",
         year: 2012,
-        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),criminal police, mafia, running and holding guns on the road, building was exploded. Asian",
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),criminal police, mafia, running and holding guns on the road, building was exploded. Asian, medium shot",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 11,
         frame: frame11
@@ -161,7 +161,7 @@ const movieData: Array<MovieState> = [
     {
         name: "一家子兒咕咕叫",
         year: 2022,
-        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),Family members stand on the grassy field, gazing at the sky. Someone releases racing pigeons. close up portrait, Asian,",
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),Family members stand on the grassy field, gazing at the sky. Someone releases racing pigeons, medium shot, Asian, looking away",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 18,
         frame: frame18
@@ -177,7 +177,7 @@ const movieData: Array<MovieState> = [
     {
         name: "陣頭",
         year: 2012,
-        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),A person, (playing a large drum:1.3),Taiko , standing, in front of the Taiwanese temple gate, open mouth, exciting, Asian, culture, intense expression",
+        prompt_value: "(masterpiece ,best quality:1.3) <lora:oldposter2:1>,(poster:0.6),A person, (playing a large horizontal Chinese drum:1.3),Taiko , standing and holding gong hammers, in front of the Taiwanese temple, open mouth, exciting, Asian, culture, intense expression, red T-shirt, jeans,",
         negative_prompt_value: "(worst quality, low quality:1.4), (dusty sunbeams:1.0), (greyscale, monochrome:1.0),lowres,low quality,text,signature, artist name, copyright name, chinese text,​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet​​lowres, bad anatomy, bad hands, text,error, missing fngers,extra digt ,fewer digits,cropped, wort quality ,low quality,normal quality, jpeg artifacts,signature,watermark, username, blurry, bad feet,",
         id: 21,
         frame: frame21
