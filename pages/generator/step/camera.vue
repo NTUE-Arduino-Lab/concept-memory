@@ -52,9 +52,9 @@ const takeSnapshot = async () => {
     if (videoRef.value && canvasRef.value) {
       const context = canvasRef.value.getContext('2d')
       if (context) {
-        canvasRef.value.width = 640
-        canvasRef.value.height = 480
-        context.drawImage(videoRef.value, 0, 0, 640, 480)
+        canvasRef.value.width = videoRef.value.videoWidth
+        canvasRef.value.height = videoRef.value.videoHeight
+        context.drawImage(videoRef.value, 0, 0, canvasRef.value.width, canvasRef.value.height)
         const imgBase64 = canvasRef.value.toDataURL()
         postersStore.setSelfieBase64(imgBase64.replace('data:image/png;base64,', ''))
       }
@@ -114,7 +114,9 @@ onMounted(() => {
     <div class="guide">建議以正面進行拍攝，可以讓生成的效果更好喔！</div>
     <div class="camera-container">
       <video v-if="!isPhotoTaken" ref="videoRef" playsinline autoplay></video>
-      <canvas ref="canvasRef"></canvas>
+      <div class="canvas-container">
+        <canvas ref="canvasRef"></canvas>
+      </div>
     </div>
     <div v-if="!isPhotoTaken">
       <button class="btn-back" @click="handleClickBackBtn">返回</button>
@@ -148,10 +150,16 @@ onMounted(() => {
   justify-content: center;
   flex-wrap: wrap;
 
-  &>canvas {
+  &>.canvas-container {
     width: 100%;
     height: 100%;
+    overflow: hidden;
   }
+
+  // &>.canvas {
+  //   width: 100%;
+  //   height: 100%;
+  // }
 
   &>video {
     width: 640px;
@@ -169,8 +177,12 @@ onMounted(() => {
       height: 480px;
     }
 
-    &>canvas {
-      width: 640px;
+    // &>canvas {
+    //   width: 640px;
+    // }
+
+    &>.canvas-container {
+          width: 640px;
     }
   }
 
