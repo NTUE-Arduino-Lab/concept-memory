@@ -52,9 +52,9 @@ const takeSnapshot = async () => {
     if (videoRef.value && canvasRef.value) {
       const context = canvasRef.value.getContext('2d')
       if (context) {
-        canvasRef.value.width = videoRef.value.videoWidth
-        canvasRef.value.height = videoRef.value.videoHeight
-        context.drawImage(videoRef.value, 0, 0, canvasRef.value.width, canvasRef.value.height)
+        canvasRef.value.width = 640
+        canvasRef.value.height = 480
+        context.drawImage(videoRef.value, 0, 0, 640, 480)
         const imgBase64 = canvasRef.value.toDataURL()
         postersStore.setSelfieBase64(imgBase64.replace('data:image/png;base64,', ''))
       }
@@ -139,8 +139,8 @@ onMounted(() => {
 }
 
 .camera-container {
-  width: 600px;
-  height: 450px;
+  width: 640px;
+  height: 480px;
   margin-bottom: 36px;
   z-index: 0;
   overflow: hidden;
@@ -154,8 +154,8 @@ onMounted(() => {
   }
 
   &>video {
-    width: 600px;
-    height: 450px;
+    width: 640px;
+    height: 480px;
     object-fit: cover;
   }
 
@@ -166,11 +166,11 @@ onMounted(() => {
   @media screen and (max-width: 680px) {
     & {
       width: 300px;
-      height: 450px;
+      height: 480px;
     }
 
     &>canvas {
-      width: 600px;
+      width: 640px;
     }
   }
 
