@@ -2,6 +2,10 @@
 import { usePermissionStore } from '@/stores/permission'
 import { doc, getDoc } from 'firebase/firestore'
 
+definePageMeta({
+  layout: 'default',
+})
+
 const { $db } = useNuxtApp()
 const isChecked = useState('isChecked', () => false)
 const inputCode = useState('inputCode', () => "")

@@ -3,6 +3,7 @@ import { usePostersStore } from '@/stores/posters'
 
 // check permission
 definePageMeta({
+  layout: 'default',
   middleware: 'permission'
 })
 

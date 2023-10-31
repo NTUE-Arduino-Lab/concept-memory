@@ -6,6 +6,7 @@ import { saveAs } from 'file-saver'
 
 // check permission
 definePageMeta({
+  layout: 'default',
   middleware: 'permission'
 })
 

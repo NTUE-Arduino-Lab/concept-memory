@@ -19,13 +19,13 @@ const clearMenuShow = () => {
       <h1>AI 記憶造浪者：<br>超時空電影海報繪師</h1>
     </NuxtLink>
     <div></div>
-    <NuxtLink to="/posters" class="nav-link">
+    <!-- <NuxtLink to="/posters" class="nav-link">
       海報牆
-    </NuxtLink>
+    </NuxtLink> -->
     <NuxtLink to="https://tcmb.culture.tw/zh-tw" class="nav-link" target="_blank">
       更多電影故事
     </NuxtLink>
-    <a herf="" @click="handleMenuShow">
+    <a id="menuBtn" herf="" @click="handleMenuShow">
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M9 12H31" stroke="#05648A" stroke-width="2" stroke-linecap="round" />
         <path d="M9 20H31" stroke="#05648A" stroke-width="2" stroke-linecap="round" />
@@ -48,9 +48,9 @@ const clearMenuShow = () => {
     <NuxtLink to="/" class="nav-link" @click="clearMenuShow">
       首頁
     </NuxtLink>
-    <NuxtLink to="/posters" class="nav-link" @click="clearMenuShow">
+    <!-- <NuxtLink to="/posters" class="nav-link" @click="clearMenuShow">
       海報牆
-    </NuxtLink>
+    </NuxtLink> -->
     <NuxtLink to="https://tcmb.culture.tw/zh-tw" target="_blank" class="nav-link" @click="clearMenuShow">
       更多電影故事
     </NuxtLink>
@@ -92,6 +92,10 @@ h1 {
     padding: 0;
   }
 
+}
+
+#menuBtn {
+  display: none;
 }
 
 
@@ -145,17 +149,17 @@ h1 {
     grid-template-columns: max-content auto max-content;
     align-items: center;
 
-    .nav-link {
-
-      &:nth-child(3),
-      &:nth-child(4) {
+    .nav-link:nth-child(3){
         display: none;
       }
-    }
   }
 
   img {
     width: 115px;
+  }
+
+  #menuBtn {
+    display: block;
   }
 
   .menu {

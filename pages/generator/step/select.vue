@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { usePostersStore } from '@/stores/posters'
 
+definePageMeta({
+  layout: 'default',
+})
+
 const postersStore = usePostersStore()
 const selectedMovie = useState('selectedMovie', () => 0)
 const movies = useState('movies', () => null)

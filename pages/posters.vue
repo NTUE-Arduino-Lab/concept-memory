@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 
+definePageMeta({
+  layout: 'posters'
+})
+
 const { $storage } = useNuxtApp()
 
 const posters = useState('posters', () => [])
@@ -45,6 +49,10 @@ onMounted(() => {
 
 <template>
   <main>
+    <div class="logo-container">
+      <img src="@/assets/img/TCMB.png" alt="" srcset="@/assets/img/TCMB.png 1x, @/assets/img/TCMB@2x.png 2x">
+      <h1>AI 記憶造浪者：<br>超時空電影海報繪師</h1>
+    </div>
     <div class="title-container">
       <span></span>
       <span v-for="char in '海報牆'">
@@ -67,9 +75,29 @@ onMounted(() => {
 <style lang="scss" scoped>
 @import '@/assets/scss/variables.scss';
 
+.logo-container{
+  position: absolute;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  
+  img {
+    width: 215px;
+  }
+
+  h1 {
+    display: inline-block;
+    @include font(serif, 16px, 900);
+    padding: 0;
+    margin: 0;
+    color: #05648A;
+  }
+}
+
 main {
   padding-bottom: 0px;
   min-height: 800px;
+  padding-top: 30px;
 }
 
 .title-container {

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { usePostersStore } from '@/stores/posters'
 
+definePageMeta({
+  layout: 'default',
+})
+
 // check permission
 definePageMeta({
     middleware: 'permission'
