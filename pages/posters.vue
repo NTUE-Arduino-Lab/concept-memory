@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Pagination, Navigation } from 'swiper/modules';
 
 definePageMeta({
   layout: 'posters'
@@ -8,6 +10,8 @@ definePageMeta({
 const { $storage } = useNuxtApp()
 
 const posters = useState('posters', () => [])
+const pageCount = useState('pageCount', () => 0)
+const pageImgCount = useState('pageImgCount', () => 10)
 const modalImg = useState('modalImg', () => null)
 
 const getPosters = async () => {
@@ -25,6 +29,11 @@ const getPosters = async () => {
       .then((items) => {
         items.reverse()
         posters.value = items
+        const containerWidth = (window.innerWidth - 56)
+        const pictureWidth = (window.innerHeight * 0.5 - 114) / 4 * 3
+        const columnCount = Math.floor((containerWidth + 20) / (pictureWidth + 20))
+        pageImgCount.value = columnCount * 2
+        pageCount.value = Math.ceil(posters.value.length / pageImgCount.value)
       }).catch((e) => {
         console.error(e);
       })
@@ -60,9 +69,35 @@ onMounted(() => {
       </span>
     </div>
     <div v-if="posters.length > 0" class="posters-container">
-      <div class="posters-list">
-        <img v-for="item, idx in posters" :src="item.url" :key="item.name" v-on:click="handleClickImg(item.url)">
-      </div>
+      <Swiper
+        :height="300"
+        :pagination="{
+          dynamicBullets: true,
+        }"
+        :navigation="true"
+        :modules="[Pagination, Navigation]"
+        :slides-per-view="1"
+        :loop="true"
+        :effect="'creative'"
+        :creative-effect="{
+          prev: {
+            shadow: false,
+            translate: ['-100%', 0, -1]
+          },
+          next: {
+            translate: ['100%', 0, 0]
+          }
+        }"
+      >
+        <SwiperSlide
+          v-for="(page, pageIdx) in pageCount"
+          :key="`page-${page}`"
+        >
+          <div class="posters-list">
+            <img v-for="item, idx in posters.slice(0+pageImgCount*pageIdx,pageImgCount+pageImgCount*pageIdx)" :src="item.url" :key="item.name" v-on:click="handleClickImg(item.url)">
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
 
     <div v-if="modalImg" class="modal">
@@ -73,7 +108,38 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+@import 'swiper/css/navigation';
 @import '@/assets/scss/variables.scss';
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-wrapper {
+  min-width: 100vh;
+  width: 100vh;
+}
+
+::v-deep .swiper-pagination-bullet-active {
+  background-color: $primary-dark !important;
+}
+
+::v-deep .swiper-button-prev{
+  left: 0 !important;
+  color: $primary-default !important;
+}
+
+::v-deep .swiper-button-next{
+  right: 0 !important;
+  color: $primary-default !important;
+}
+
+::v-deep .swiper-button-prev:after, ::v-deep .swiper-button-next:after {
+    font-size: 30px;
+}
 
 .logo-container{
   position: absolute;
@@ -96,8 +162,9 @@ onMounted(() => {
 
 main {
   padding-bottom: 0px;
-  min-height: 800px;
+  height: calc(100vh - 26px);
   padding-top: 30px;
+  overflow: none;
 }
 
 .title-container {
@@ -111,30 +178,31 @@ main {
 .posters-container {
   position: relative;
   width: 100%;
-  height: 600px;
-  max-height: 600px;
+  height: calc(100vh - 200px);
   padding: 24px 28px;
-  margin-top: 36px;
+  margin-top: 12px;
   margin-bottom: 60px;
   background-color: white;
-  overflow: scroll;
 
   .posters-list {
+    width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 240px);
+    grid-template-columns: repeat(auto-fill, calc((50vh - 114px) / 4 * 3));
+    grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     justify-content: center;
 
     img {
-      width: 100%;
+      height: calc(50vh - 114px);
       cursor: pointer;
     }
   }
 
   &::before {
-    content: "";
+    content: "";    
+    z-index: 2;
     display: block;
     position: absolute;
     width: 100%;
@@ -144,16 +212,17 @@ main {
     background: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255));
   }
 
-  // &::after {
-  //   content: "";
-  //   display: block;
-  //   position: absolute;
-  //   width: 100%;
-  //   height: 60px;
-  //   bottom: 0;
-  //   left: 0;
-  //   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));
-  // }
+  &::after {
+    content: "";
+    z-index: 2;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));
+  }
 
   @media screen and (max-width: 780px) {
     & {
@@ -175,13 +244,13 @@ main {
     background-color: rgba(0, 0, 0, .5);
     width: 100vw;
     height: 1200px;
-    z-index: 1;
+    z-index: 10;
   }
 
   .modal-poster {
     max-height: 80vh;
     height: auto;
-    z-index: 2;
+    z-index: 20;
     max-width: 80vw;
   }
 

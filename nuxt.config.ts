@@ -5,8 +5,12 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     "@pinia-plugin-persistedstate/nuxt",
     'nuxt-svgo',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    'nuxt-swiper'
   ],
+  swiper: {
+      modules: ['navigation', 'pagination', 'effect-creative' ]
+  },
   piniaPersistedstate: {
     storage: 'localStorage',
   },
