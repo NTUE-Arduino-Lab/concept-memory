@@ -10,30 +10,38 @@ const { $db } = useNuxtApp()
 const isChecked = useState('isChecked', () => false)
 const inputCode = useState('inputCode', () => "")
 const enterCode = useState('enterCode', () => null)
-let warning = useState('warning', () => null)
+const warning = useState('warning', () => null)
+const loading = useState('loading', () => true)
 
 const permissionStore = usePermissionStore()
 
 const handleClickEnterBtn = () => {
-  if (!enterCode)
-    console.log("cannot get entercode")
+  loading.value = true
 
   const isEnterCode = inputCode.value == enterCode.value;
 
   if (inputCode.value == "") {
     warning.value = "請輸入活動碼"
+    loading.value = false
   }
   else if (!isChecked.value) {
     warning.value = "請同意個人資料使用"
+    loading.value = false
   }
-  else if (!isEnterCode) {
+  else if (!isEnterCode && enterCode.value) {
     permissionStore.setPermission(false)
     warning.value = "活動碼錯誤"
+    loading.value = false
+  }
+  else if (isChecked.value && !enterCode.value) {
+    permissionStore.setPermission(false)
+    warning.value = ""
   }
   else if (isChecked.value && isEnterCode) {
     warning.value = ""
     permissionStore.setPermission(true)
     navigateTo('/generator/step/select')
+    loading.value = false 
   }
 }
 
@@ -52,6 +60,7 @@ onMounted(() => {
   warning.value = null
   inputCode.value = ""
   isChecked.value = false
+  loading.value = false
 
   getEnterPassword()
 })
@@ -85,7 +94,10 @@ onMounted(() => {
     </div>
     <div class="enter-container">
       <input type="text" placeholder="輸入活動碼" v-model="inputCode" />
-      <button @click="handleClickEnterBtn">進入</button>
+      <button @click="handleClickEnterBtn">
+        <Icon v-if="loading" name="eos-icons:loading" size="28"/>
+        <span v-if="!loading">進入</span>
+      </button>
     </div>
     <span class="warning">{{ warning }}</span>
   </main>
@@ -93,6 +105,10 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 @import '@/assets/scss/variables.scss';
+
+button {
+  width: 76px;
+}
 
 .example-container {
   margin-bottom: 28px;
