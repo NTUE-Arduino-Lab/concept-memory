@@ -40,16 +40,14 @@ const handleClickNextBtn = () => {
         <option v-for="item, idx in movies" :key="item.name" :value="idx">{{ `${item.name}(${item.year})` }}</option>
       </select>
       <img v-if="screenWidth <= 760" v-for="item, idx in movies" :class="`poster ${selectedMovie == idx ? 'poster-show' : ''}`"
-        :src="`/img/movies/movie${item.id}.jpg`" alt=""
-        :srcset="`/img/movies/movie${item.id}.jpg 1x, /img/movies/movie${item.id}@2x.jpg 2x`">
+        :src="`/img/movies/movie${item.id}@2x.jpg`" alt="">
       <ul v-if="screenWidth > 760">
       <li v-for="item, idx in movies" :key="item.name">
         <input type="radio" :id="item.name" name="selector" v-model="selectedMovie" :value="idx">
         <label :for="item.name" name="selector">
           <div v-if="idx === selectedMovie || selectedMovie === -1" class="selected-bg"></div>
           <!-- <img :src="`/assets/img/movies/movie${idx}.jpg`" alt="" :srcset="`/assets/img/movies/movie${idx}.jpg 1x, /assets/img/movies/movie${idx}@2x.jpg 2x`"> -->
-          <img :src="`/img/movies/movie${item.id}.jpg`" alt=""
-            :srcset="`/img/movies/movie${item.id}.jpg 1x, /img/movies/movie${item.id}@2x.jpg 2x`">
+          <img :src="`/img/movies/movie${item.id}@2x.jpg`" alt="">
           <span>{{ item.name }}</span>
           <span>{{ item.year }}</span>
         </label>
