@@ -20,7 +20,13 @@ const handleClickEnterBtn = () => {
 
   const isEnterCode = inputCode.value == enterCode.value;
 
-  if (inputCode.value == "") {
+  if (isChecked.value && isEnterCode) {
+    warning.value = ""
+    permissionStore.setPermission(true)
+    navigateTo('/generator/step/select')
+    loading.value = false 
+  }
+  else if (inputCode.value == "") {
     warning.value = "請輸入活動碼"
     loading.value = false
   }
@@ -36,12 +42,6 @@ const handleClickEnterBtn = () => {
   else if (isChecked.value && !enterCode.value) {
     permissionStore.setPermission(false)
     warning.value = ""
-  }
-  else if (isChecked.value && isEnterCode) {
-    warning.value = ""
-    permissionStore.setPermission(true)
-    navigateTo('/generator/step/select')
-    loading.value = false 
   }
 }
 
