@@ -8,6 +8,7 @@ definePageMeta({
 const postersStore = usePostersStore()
 const selectedMovie = useState('selectedMovie', () => 0)
 const movies = useState('movies', () => null)
+const screenWidth = useState('screenWidth', () => 1280)
 
 // check permission
 definePageMeta({
@@ -15,6 +16,7 @@ definePageMeta({
 })
 
 onMounted(() => {
+  screenWidth.value = window.innerWidth
   movies.value = postersStore.movies
   selectedMovie.value = 0
 })
@@ -34,13 +36,13 @@ const handleClickNextBtn = () => {
       </span>
     </div>
     <div class="guide">提供臺灣近代電影海報，選擇你喜歡的電影元素</div>
-    <select v-model="selectedMovie">
-      <option v-for="item, idx in movies" :key="item.name" :value="idx">{{ `${item.name}(${item.year})` }}</option>
-    </select>
-    <img v-for="item, idx in movies" :class="`poster ${selectedMovie == idx ? 'poster-show' : ''}`"
-      :src="`/img/movies/movie${item.id}.jpg`" alt=""
-      :srcset="`/img/movies/movie${item.id}.jpg 1x, /img/movies/movie${item.id}@2x.jpg 2x`">
-    <ul>
+      <select v-if="screenWidth <= 760" v-model="selectedMovie">
+        <option v-for="item, idx in movies" :key="item.name" :value="idx">{{ `${item.name}(${item.year})` }}</option>
+      </select>
+      <img v-if="screenWidth <= 760" v-for="item, idx in movies" :class="`poster ${selectedMovie == idx ? 'poster-show' : ''}`"
+        :src="`/img/movies/movie${item.id}.jpg`" alt=""
+        :srcset="`/img/movies/movie${item.id}.jpg 1x, /img/movies/movie${item.id}@2x.jpg 2x`">
+      <ul v-if="screenWidth > 760">
       <li v-for="item, idx in movies" :key="item.name">
         <input type="radio" :id="item.name" name="selector" v-model="selectedMovie" :value="idx">
         <label :for="item.name" name="selector">
@@ -53,7 +55,7 @@ const handleClickNextBtn = () => {
         </label>
       </li>
     </ul>
-    <div class="selected">{{ movies ? movies[selectedMovie].name : "" }}</div>
+    <div v-if="screenWidth > 760" class="selected">{{ movies ? movies[selectedMovie].name : "" }}</div>
     <button @click="handleClickNextBtn">下一步</button>
   </main>
 </template>
