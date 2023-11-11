@@ -29,11 +29,7 @@ const getPosters = async () => {
       .then((items) => {
         items.reverse()
         posters.value = items
-        const containerWidth = (window.innerWidth - 56)
-        const pictureWidth = (window.innerHeight * 0.5 - 114) / 4 * 3
-        const columnCount = Math.floor((containerWidth + 20) / (pictureWidth + 20))
-        pageImgCount.value = columnCount * 2
-        pageCount.value = Math.ceil(posters.value.length / pageImgCount.value)
+        changePageCount()
       }).catch((e) => {
         console.error(e);
       })
@@ -41,6 +37,25 @@ const getPosters = async () => {
   } catch (e) {
     console.error(e);
   }
+}
+
+const changePageCount = () => {
+  let containerWidth
+  if(window.innerWidth < 780)
+    containerWidth = (window.innerWidth - 40)
+  else
+    containerWidth = (window.innerWidth - 120)
+  const pictureHeight = (window.innerHeight * 0.5 - 114)
+  const pictureWidth = pictureHeight / 4 * 3
+  const columnCount = Math.floor((containerWidth + 20) / (pictureWidth + 20))
+  pageImgCount.value = columnCount * 2
+  pageCount.value = Math.ceil(posters.value.length / pageImgCount.value)
+  console.log(containerWidth)
+  console.log(pictureHeight)
+  console.log(pictureWidth)
+  console.log(columnCount)
+  console.log(columnCount * 2)
+  console.log(Math.ceil(posters.value.length / pageImgCount.value))
 }
 
 const handleClickImg = (imgUrl) => {
@@ -53,6 +68,8 @@ const handleClickModalClose = () => {
 
 onMounted(() => {
   getPosters()
+
+  window.addEventListener('resize', changePageCount)
 })
 </script>
 
@@ -69,17 +86,10 @@ onMounted(() => {
       </span>
     </div>
     <div v-if="posters.length > 0" class="posters-container">
-      <Swiper
-        :height="300"
-        :pagination="{
-          dynamicBullets: true,
-        }"
-        :navigation="true"
-        :modules="[Pagination, Navigation]"
-        :slides-per-view="1"
-        :loop="true"
-        :effect="'creative'"
-        :creative-effect="{
+      <Swiper :height="300" :pagination="{
+        dynamicBullets: true,
+      }" :navigation="true" :modules="[Pagination, Navigation]" :slides-per-view="1" :loop="true"
+        :effect="'creative'" :creative-effect="{
           prev: {
             shadow: false,
             translate: ['-100%', 0, -1]
@@ -87,14 +97,11 @@ onMounted(() => {
           next: {
             translate: ['100%', 0, 0]
           }
-        }"
-      >
-        <SwiperSlide
-          v-for="(page, pageIdx) in pageCount"
-          :key="`page-${page}`"
-        >
+        }">
+        <SwiperSlide v-for="(page, pageIdx) in pageCount" :key="`page-${page}`">
           <div class="posters-list">
-            <img v-for="item, idx in posters.slice(0+pageImgCount*pageIdx,pageImgCount+pageImgCount*pageIdx)" :src="item.url" :key="item.name" v-on:click="handleClickImg(item.url)">
+            <img v-for="item, idx in posters.slice(0 + pageImgCount * pageIdx, pageImgCount + pageImgCount * pageIdx)"
+              :src="item.url" :key="item.name" v-on:click="handleClickImg(item.url)">
           </div>
         </SwiperSlide>
       </Swiper>
@@ -118,6 +125,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
 }
+
 .swiper-wrapper {
   min-width: 100vh;
   width: 100vh;
@@ -127,26 +135,27 @@ onMounted(() => {
   background-color: $primary-dark !important;
 }
 
-::v-deep .swiper-button-prev{
+::v-deep .swiper-button-prev {
   left: 0 !important;
   color: $primary-default !important;
 }
 
-::v-deep .swiper-button-next{
+::v-deep .swiper-button-next {
   right: 0 !important;
   color: $primary-default !important;
 }
 
-::v-deep .swiper-button-prev:after, ::v-deep .swiper-button-next:after {
-    font-size: 30px;
+::v-deep .swiper-button-prev:after,
+::v-deep .swiper-button-next:after {
+  font-size: 30px;
 }
 
-.logo-container{
+.logo-container {
   position: absolute;
   left: 20px;
   display: flex;
   align-items: center;
-  
+
   img {
     width: 215px;
   }
@@ -177,7 +186,7 @@ main {
 
 .posters-container {
   position: relative;
-  width: 100%;
+  width: calc(100vw - 120px);
   height: calc(100vh - 200px);
   padding: 24px 28px;
   margin-top: 12px;
@@ -195,13 +204,13 @@ main {
     justify-content: center;
 
     img {
-      height: calc(50vh - 114px);
+      height: calc((100vh - 228px) * 0.5);
       cursor: pointer;
     }
   }
 
   &::before {
-    content: "";    
+    content: "";
     z-index: 2;
     display: block;
     position: absolute;
@@ -226,6 +235,7 @@ main {
 
   @media screen and (max-width: 780px) {
     & {
+      width: calc(100vw - 40px);
       padding-left: 0;
       padding-right: 0;
     }
