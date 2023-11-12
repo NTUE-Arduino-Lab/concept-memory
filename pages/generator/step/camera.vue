@@ -53,6 +53,7 @@ const takeSnapshot = async () => {
     if (videoRef.value && canvasRef.value) {
       const context = canvasRef.value.getContext('2d')
       if (context) {
+        
         canvasRef.value.width = videoRef.value.videoWidth
         canvasRef.value.height = videoRef.value.videoHeight
         context.drawImage(videoRef.value, 0, 0, videoRef.value.videoWidth, videoRef.value.videoHeight)
@@ -160,10 +161,10 @@ onMounted(() => {
     justify-content: center;
   }
 
-  // &>.canvas {
-  //   width: 100%;
-  //   height: 100%;
-  // }
+  &>.canvas {
+   width: 100%;
+    height: 100%;
+  }
 
   &>video {
     width: 640px;

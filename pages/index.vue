@@ -107,7 +107,7 @@ onMounted(() => {
 @import '@/assets/scss/variables.scss';
 
 button {
-  width: 76px;
+  width: 80px;
   padding: 0;
 }
 
