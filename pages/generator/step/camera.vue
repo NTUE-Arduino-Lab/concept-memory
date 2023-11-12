@@ -53,8 +53,8 @@ const takeSnapshot = async () => {
     if (videoRef.value && canvasRef.value) {
       const context = canvasRef.value.getContext('2d')
       if (context) {
-        canvasRef.value.width = 640
-        canvasRef.value.height = 480
+        canvasRef.value.width = videoRef.value.videoWidth
+        canvasRef.value.height = videoRef.value.videoHeight
         console.log(videoRef.value.videoWidth, videoRef.value.videoHeight)
         context.drawImage(videoRef.value, 0, 0, videoRef.value.videoWidth, videoRef.value.videoHeight)
         const imgBase64 = canvasRef.value.toDataURL()
@@ -159,11 +159,13 @@ onMounted(() => {
     overflow: hidden;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   &>.canvas {
-   width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
+    margin: 0 auto;
   }
 
   &>video {
