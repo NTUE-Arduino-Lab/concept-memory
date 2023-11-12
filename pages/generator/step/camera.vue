@@ -53,9 +53,9 @@ const takeSnapshot = async () => {
     if (videoRef.value && canvasRef.value) {
       const context = canvasRef.value.getContext('2d')
       if (context) {
-        canvasRef.value.width = 640
-        canvasRef.value.height = 480
-        context.drawImage(videoRef.value, 0, 0, 640, 480)
+        canvasRef.value.width = videoRef.value.videoWidth
+        canvasRef.value.height = videoRef.value.videoHeight
+        context.drawImage(videoRef.value, 0, 0, videoRef.value.videoWidth, videoRef.value.videoHeight)
         const imgBase64 = canvasRef.value.toDataURL()
         postersStore.setSelfieBase64(imgBase64.replace('data:image/png;base64,', ''))
       }
