@@ -108,6 +108,7 @@ onMounted(() => {
 
 button {
   width: 76px;
+  padding: 0;
 }
 
 .example-container {
