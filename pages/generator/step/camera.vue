@@ -115,7 +115,7 @@ onMounted(() => {
     </div>
     <div class="guide">建議以正面進行拍攝，可以讓生成的效果更好喔！</div>
     <div class="camera-container">
-      <video v-if="!isPhotoTaken" ref="videoRef" playsinline autoplay></video>
+      <video v-if="!isPhotoTaken" ref="videoRef" playsinline autoplay width="640" height="480"></video>
       <div class="canvas-container">
         <canvas ref="canvasRef"></canvas>
       </div>
