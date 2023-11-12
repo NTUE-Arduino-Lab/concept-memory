@@ -178,7 +178,7 @@ onMounted(() => {
     z-index: 1;
   }
 
-  @media screen and (max-width: 820px) {
+  @media screen and (max-width: 680px) {
     & {
       width: 300px;
       height: 480px;
