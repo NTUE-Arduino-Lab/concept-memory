@@ -171,7 +171,7 @@ onMounted(() => {
   &>video {
     width: 640px;
     height: 480px;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   &~div {
