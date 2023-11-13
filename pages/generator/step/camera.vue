@@ -86,7 +86,7 @@ const stopCamera = () => {
       }
       mediaStream = null;
 
-      clearCanvas()
+      //clearCanvas()
 
       isPhotoTaken.value = false
     }
