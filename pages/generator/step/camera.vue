@@ -30,6 +30,7 @@ const handleClickCaptureBtn = async () => {
 }
 
 const handleClickNextBtn = () => {
+  stopCamera()
   navigateTo('/generator/step/generate')
 }
 
@@ -86,7 +87,7 @@ const stopCamera = () => {
       }
       mediaStream = null;
 
-      //clearCanvas()
+      clearCanvas()
 
       isPhotoTaken.value = false
     }
